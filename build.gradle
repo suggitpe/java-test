@@ -21,6 +21,8 @@ subprojects { subprojects ->
 
         runtime "org.slf4j:slf4j-log4j12:$slf4jVersion"
         runtime "log4j:log4j:$log4jVersion"
+
+        testCompile "junit:junit:$junitVersion"
     }
 
 
