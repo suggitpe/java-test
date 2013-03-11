@@ -1,2 +1,3 @@
 include "apps-under-test:trader",
-    "apps-under-test:gameoflife"
+    "apps-under-test:gameoflife",
+    "sandbox:cucumber"

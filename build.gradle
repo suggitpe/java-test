@@ -25,6 +25,14 @@ subprojects { subprojects ->
         testCompile "junit:junit:$junitVersion"
     }
 
+}
 
+project("sandbox:cucumber") {
+
+    dependencies {
+        testCompile project(':apps-under-test:trader')
+        testCompile "info.cukes:cucumber-junit:$cucumberVersion"
+        testCompile "info.cukes:cucumber-java:$cucumberVersion"
+    }
 
 }
