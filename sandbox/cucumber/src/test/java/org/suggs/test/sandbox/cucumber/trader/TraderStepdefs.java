@@ -1,4 +1,4 @@
-package org.suggs.test.sandbox.cucumber;
+package org.suggs.test.sandbox.cucumber.trader;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
