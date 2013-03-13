@@ -5,6 +5,7 @@ import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.io.LoadFromClasspath;
+import org.jbehave.core.io.LoadFromURL;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.AnnotatedEmbedderRunner;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
@@ -13,7 +14,6 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +25,7 @@ import static org.suggs.test.sandbox.jbehave.support.AbstractStoryEmbedder.Sandb
 
 @RunWith(AnnotatedEmbedderRunner.class)
 @UsingEmbedder(embedder = Embedder.class)
-@Configure(storyLoader = AbstractStoryEmbedder.SandboxStoryLoader.class,
+@Configure(storyLoader = LoadFromURL.class,
         stepPatternParser = RegexPrefixCapturingPatternParser.class,
         parameterConverters = {SandboxDateConverter.class},
         storyReporterBuilder = SandboxStoryReporterBuilder.class)
@@ -37,7 +37,8 @@ import static org.suggs.test.sandbox.jbehave.support.AbstractStoryEmbedder.Sandb
 public abstract class AbstractStoryEmbedder extends InjectableEmbedder {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractStoryEmbedder.class);
-    private final URL storyLocation = codeLocationFromClass(this.getClass());
+    private final String storyLocation = codeLocationFromClass(this.getClass()).getFile();
+
 
     @Test
     public void findStories() {
@@ -46,35 +47,31 @@ public abstract class AbstractStoryEmbedder extends InjectableEmbedder {
 
     }
 
+    @Test
     @Override
     public void run() throws Throwable {
         StoryFinder finder = new StoryFinder();
         LOG.info("Running stories from location [" + storyLocation + "]");
         List<String> urls = finder.findPaths(storyLocation,
-                Arrays.asList(doGetStoryIncludeRegex()),
-                Arrays.asList(doGetStoryExcludeRegex()));
+                doGetStoryIncludeRegex(),
+                doGetStoryExcludeRegex(),
+                "file:" + storyLocation);
         LOG.info("Running stories: " + urls);
         injectedEmbedder().runStoriesAsPaths(urls);
     }
 
-    protected String doGetStoryIncludeRegex() {
-        return "";
+    protected List<String> doGetStoryIncludeRegex() {
+        return Arrays.asList("**/*.story");
     }
 
-    protected String doGetStoryExcludeRegex() {
-        return "**/*.story";
+    protected List<String> doGetStoryExcludeRegex() {
+        return null;
     }
 
     public static class SandboxDateConverter extends DateConverter {
 
         public SandboxDateConverter() {
             super(new SimpleDateFormat("dd-MM-yyyy"));
-        }
-    }
-
-    public static class SandboxStoryLoader extends LoadFromClasspath {
-        public SandboxStoryLoader() {
-            super(AbstractStoryEmbedder.class.getClassLoader());
         }
     }
 }
