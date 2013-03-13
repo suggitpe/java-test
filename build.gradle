@@ -1,20 +1,26 @@
 allprojects {
     defaultTasks 'clean', 'build'
-}
-
-subprojects { subprojects ->
 
     apply plugin: 'maven'
     apply plugin: 'java'
-
-    group = 'org.suggs.test'
-    version = '1.0-SNAPSHOT'
+    apply plugin: 'idea'
+    
     buildDir = 'target'
+    version = '1.0-SNAPSHOT'
+    group = 'org.suggs.test'
 
     repositories {
         mavenLocal()
         mavenCentral()
     }
+
+    idea{
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+subprojects { subprojects ->
 
     dependencies {
         compile "org.slf4j:slf4j-api:$slf4jVersion"
