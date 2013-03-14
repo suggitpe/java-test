@@ -4,7 +4,6 @@ import org.jbehave.core.InjectableEmbedder;
 import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
 import org.jbehave.core.embedder.Embedder;
-import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.LoadFromURL;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.AnnotatedEmbedderRunner;
@@ -38,14 +37,6 @@ public abstract class AbstractStoryEmbedder extends InjectableEmbedder {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractStoryEmbedder.class);
     private final String storyLocation = codeLocationFromClass(this.getClass()).getFile();
-
-
-    @Test
-    public void findStories() {
-        LOG.info("Finding stories from [" + codeLocationFromClass(getClass()) + "]");
-        LOG.info("Finding stories from [" + getClass().getClassLoader().getResource(".").getFile() + "]");
-
-    }
 
     @Test
     @Override

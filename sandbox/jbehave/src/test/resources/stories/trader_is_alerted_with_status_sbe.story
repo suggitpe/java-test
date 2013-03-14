@@ -6,25 +6,11 @@ In order that I make a profit
 As a person who likes to dabble in the stock market
 I want to monitor stock market prices against thresholds
 
-Scenario: when a stock price is below the threshold, the alert will be off 
-Given a stock of symbol STK1 and a threshold of 10.0
-When the stock is traded at 5.0
-Then the alert status should be OFF
-
-Scenario: when a stock price is above a threshold, the alert will be on
-Given a stock of symbol STK1 and a threshold of 10.0
-When the stock is traded at 15.0
-Then the alert status should be ON
-
-Scenario: when a stock price is the same as the threshold, the alert will be on
-Given a stock of symbol STK1 and a threshold of 10.0
-When the stock is traded at 10.0
-Then the alert status should be ON
-
-Scenario: parameterised scenario
-Given a stock of <symbol> and a threshold <threshold>
-When the stock is traded with <price>
-Then the alert status will be <status>
+Scenario: Stock status is driven from price and threshold
+Given a stock with a symbol of <symbol>
+And a threshold of <threshold>
+When the stock is traded at <price>
+Then the alert status should be <status>
 
 Examples:
 |symbol|threshold|price|status|
