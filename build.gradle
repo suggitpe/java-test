@@ -3,7 +3,8 @@ allprojects {
 
     apply plugin: 'maven'
     apply plugin: 'java'
-    
+    apply plugin: 'idea'
+
     buildDir = 'target'
     version = '1.0-SNAPSHOT'
     group = 'org.suggs.test'
@@ -13,7 +14,7 @@ allprojects {
         mavenCentral()
     }
 
-    idea{
+    idea {
         downloadSources = true
         downloadJavadoc = true
     }
@@ -32,9 +33,9 @@ subprojects { subprojects ->
 
 }
 
-project("sandbox"){
-    subprojects{
-        dependencies{
+project("sandbox") {
+    subprojects {
+        dependencies {
             testCompile project(':apps-under-test:trader')
             testCompile project(':apps-under-test:gameoflife')
         }
@@ -48,9 +49,21 @@ project("sandbox:cucumber") {
     }
 }
 
-project("sandbox:jbehave"){
-    dependencies{
+project("sandbox:jbehave") {
+    dependencies {
         testCompile "org.jbehave:jbehave-core:$jbehaveVersion"
     }
 
+}
+
+project("sandbox:concordion") {
+    dependencies {
+        testCompile "org.concordion:concordion:$concordionVersion"
+        testCompile "org.concordion:concordion-extensions:$concordionExtensionsVersion"
+        testCompile "org.agileinsider:concordion-plus:$concordionPlusVersion"
+    }
+
+    test {
+        systemProperties 'concordion.output.dir': file("${buildDir}/concordion-results")
+    }
 }

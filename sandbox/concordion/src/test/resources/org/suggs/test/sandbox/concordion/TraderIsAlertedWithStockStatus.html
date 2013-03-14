@@ -1,0 +1,42 @@
+<html xmlns:ccdn="http://www.concordion.org/2007/concordion" xmlns:cp="http://www.agileinsider.org/concordion/plus">
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>A Trader is alerted with Trade Status when the price changes</h1>
+
+<p>
+    I want to track the prices of stocks so that I can trade more effectively. As such I need to be alerted
+</p>
+<p>
+    when stock prices go above a threshold.<br/>
+    In order that I make a profit<br/>
+    As a person who likes to dabble in the stock market<br/>
+    I want to monitor stock market prices against thresholds
+</p>
+
+<div class="scenario" cp:scenario="Trader is alerted with stock status">
+
+    <h3>Stock statuses are affected by prices against thresholds</h3>
+
+    <p>
+    <table ccdn:execute="#result = checkStockStatusFrom(#symbol, #threshold, #price)">
+        <tr>
+            <th ccdn:set="#symbol">Symbol</th>
+            <th ccdn:set="#threshold">Threshold</th>
+            <th ccdn:set="#price">Price</th>
+            <th ccdn:assertEquals="#result">Stock Status</th>
+        </tr>
+        <tr><td>STK1</td><td>20.0</td><td>5.0</td><td>OFF</td></tr>
+        <tr><td>STK1</td><td>20.0</td><td>10.0</td><td>OFF</td></tr>
+        <tr><td>STK1</td><td>20.0</td><td>15.0</td><td>OFF</td></tr>
+        <tr><td>STK1</td><td>20.0</td><td>19.9</td><td>OFF</td></tr>
+        <tr><td>STK1</td><td>20.0</td><td>20.0</td><td>ON</td></tr>
+        <tr><td>STK1</td><td>20.0</td><td>25.0</td><td>ON</td></tr>
+    </table>
+    </p>
+
+</div>
+
+</body>
+</html>

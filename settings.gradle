@@ -1,4 +1,6 @@
 include "apps-under-test:trader",
         "apps-under-test:gameoflife",
         "sandbox:cucumber",
-        "sandbox:jbehave"
+        "sandbox:jbehave",
+        "sandbox:concordion"
+
