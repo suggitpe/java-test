@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /**
- * TODO: Justify why you have written this class
+ * Steps class to support the Trader story.
  */
 public class TraderSteps {
 

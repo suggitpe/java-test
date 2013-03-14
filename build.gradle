@@ -3,7 +3,6 @@ allprojects {
 
     apply plugin: 'maven'
     apply plugin: 'java'
-    apply plugin: 'idea'
     
     buildDir = 'target'
     version = '1.0-SNAPSHOT'

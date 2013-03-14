@@ -7,6 +7,7 @@ As a person who likes to dabble in the stock market
 I want to monitor stock market prices against thresholds
 
 Scenario: Stock status is driven from price and threshold
+
 Given a stock with a symbol of <symbol>
 And a threshold of <threshold>
 When the stock is traded at <price>
