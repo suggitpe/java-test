@@ -1,6 +1,5 @@
 package org.suggs.test.sandbox.jbehave;
 
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.UsingSteps;
 import org.suggs.test.sandbox.jbehave.gameoflife.GameOfLifeSteps;
 import org.suggs.test.sandbox.jbehave.support.AbstractStoryEmbedder;
