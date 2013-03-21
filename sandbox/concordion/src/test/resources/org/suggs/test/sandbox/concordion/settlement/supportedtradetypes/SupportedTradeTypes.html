@@ -1,0 +1,42 @@
+<html xmlns:ccdn="http://www.concordion.org/2007/concordion" xmlns:cp="http://www.agileinsider.org/concordion/plus">
+<title>Supported Trade Types</title>
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="scenario" cp:scenario="Process settlements for a range of FX products">
+
+    <h3>Process settlements for a range of FX products</h3>
+
+    <p>
+        The FX business utilises a number of products to sell to their clients. The Settlement Obligation
+        Management component will support these products.
+    </p>
+
+    <table ccdn:execute="#result = processSettlementForTradeTypeOf(#tradeType)">
+        <tr>
+            <th ccdn:set="#tradeType">Trade Type</th>
+            <th ccdn:assertEquals="#result">Supported</th>
+        </tr>
+        <tr>
+            <td>FX:Spot</td><td>Yes</td>
+        </tr>
+        <tr>
+            <td>FX:Forward</td><td>Yes</td>
+        </tr>
+        <tr>
+            <td>FX:Swap</td><td>Yes</td>
+        </tr>
+        <tr>
+            <td>FX:NonDeliverableSpot</td><td>Yes</td>
+        </tr>
+        <tr>
+            <td>FX:NonDeliverableForward</td><td>Yes</td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

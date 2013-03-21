@@ -1,0 +1,40 @@
+<html xmlns:ccdn="http://www.concordion.org/2007/concordion" xmlns:cp="http://www.agileinsider.org/concordion/plus">
+<title>Boking Scenarios</title>
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="scenario" cp:scenario="Process settlement requests for a range of trade states">
+
+    <h3>Process settlement requests for a range of trade states</h3>
+    <p>
+        In the booking of trades, we expect that the vast majority will be booked correctly first time and that no
+        changes are required to the booking.  However, we additionally expect that a number will also be booked
+        incorrectly.  In the case where a trade has been booked incorrectly there are two options:
+        <ol>
+            <li>Amend the trade: if the change is not an economic change</li>
+            <li>Cancel the trade: if the change is an economic (assumption is that the trade is rebooked)</li>
+        </ol>
+    </p>
+
+    <table ccdn:execute="#result = processSettlement(#settlementStatus)">
+        <tr>
+            <th ccdn:set="#settleStatus">Settlement Status</th>
+        </tr>
+        <tr>
+            <td>NEW</td>
+        </tr>
+        <tr>
+            <td>AMEND</td>
+        </tr>
+        <tr>
+            <td>CANCEL</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

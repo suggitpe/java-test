@@ -1,0 +1,47 @@
+<html xmlns:ccdn="http://www.concordion.org/2007/concordion" xmlns:cp="http://www.agileinsider.org/concordion/plus">
+<title>Settlement Methods</title>
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<h3>Process a settlement request for a trade with a number of settlement methods</h3>
+    <p>
+        A number of methods exist for settling obligations to settle.  For each differing settlement method, different
+        activities will be required to fully settle the obligation.  At a high level settlements need to do a range of
+        the following:
+    <ul>
+        <li>Cash Management to populate the Nostros</li>
+        <li>Accounting to the books and records</li>
+        <li>Managing settlement risk</li>
+        <li>Payments/receipts across Nostros</li>
+    </ul>
+    </p>
+
+<div class="scenario" cp:scenario="Process a settlement request for an FX trade with a number of settlement methods">
+
+    <table ccdn:execute="#result=processSettlementForSettlementMethodOf(#settlementMethod)">
+        <tr>
+            <th ccdn:set="#settlementMethod">Settlement Method</th>
+            <th ccdn:assertEquals="#result.cashManaged">Cash Management Required</th>
+            <th ccdn:assertEquals="#result.accountedFor">Accounting Required</th>
+            <th ccdn:assertEquals="#result.riskManaged">Open Settlement Risk Required</th>
+            <th ccdn:assertEquals="#result.nostroMoved">Nostro Movements Required</th>
+        </tr>
+        <tr>
+            <td>Account to Account</td><td>No</td><td>Yes</td><td>No</td><td>No</td>
+        </tr>
+        <!--<tr>-->
+            <!--<td>Contractual</td><td>No</td><td>No</td><td>No</td><td>No</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Actual</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td>-->
+        <!--</tr>-->
+    </table>
+
+</div>
+
+
+</body>
+
+</html>
