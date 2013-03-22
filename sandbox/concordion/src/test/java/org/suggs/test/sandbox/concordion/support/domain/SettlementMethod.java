@@ -5,7 +5,9 @@ package org.suggs.test.sandbox.concordion.support.domain;
  * 1.
  */
 public enum SettlementMethod {
-    ACCOUNT_TO_ACCOUNT("Account to Account");
+    ACCOUNT_TO_ACCOUNT("Account to Account"),
+    CONTRACTUAL("Contractual"),
+    ACTUAL("Actual");
 
     private final String settlementMethod;
 
@@ -15,9 +17,9 @@ public enum SettlementMethod {
 
     public static SettlementMethod fromString(String aEnumText) {
         if (aEnumText != null) {
-            for (SettlementMethod sm : SettlementMethod.values()) {
-                if (aEnumText.equals(sm.settlementMethod)) {
-                    return sm;
+            for (SettlementMethod settlementmethod : SettlementMethod.values()) {
+                if (aEnumText.equals(settlementmethod.settlementMethod)) {
+                    return settlementmethod;
                 }
             }
         }

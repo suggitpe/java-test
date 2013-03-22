@@ -7,5 +7,6 @@ import org.suggs.test.sandbox.concordion.support.domain.SettlementMethod;
  * 1.
  */
 public interface SettlementRequest {
+
     void setSettlementMethod(SettlementMethod settlementMethod);
 }

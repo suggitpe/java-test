@@ -2,6 +2,8 @@ package org.suggs.test.sandbox.concordion.support.dsl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.suggs.test.sandbox.concordion.support.driver.SettlementRequestSender;
+import org.suggs.test.sandbox.concordion.support.driver.SettlementStatusListener;
 
 import static org.suggs.test.sandbox.concordion.support.driver.SettlementRequestBuilder.aSettlementRequest;
 
@@ -12,15 +14,20 @@ import static org.suggs.test.sandbox.concordion.support.driver.SettlementRequest
 public class DSL {
     private static final Logger LOG = LoggerFactory.getLogger(DSL.class);
 
-    protected SettlementStatus waitForSettlementStatus() {
-        throw new IllegalStateException();
-    }
+    // inject me fool!!!!
+    private SettlementRequestSender settlementRequestSender = new SettlementRequestSender();
+    private SettlementStatusListener settlementStatusListener = new SettlementStatusListener();
 
-    protected void sendSettlementRequest(SettlementRequest settlementRequestForMethod) {
-        throw new IllegalStateException();
-    }
 
-    protected SettlementRequest createSettlementRequestForMethod(String aSettlementMethod) {
+    protected SettlementRequest createSettlementRequestForSettlementMethod(String aSettlementMethod) {
         return aSettlementRequest().withASettlementMethodOf(aSettlementMethod).build();
+    }
+
+    protected void sendSettlementRequest(SettlementRequest aSettlementRequest) {
+        settlementRequestSender.sendSettlementRequest(aSettlementRequest);
+    }
+
+    protected SettlementRequestStatus waitForSettlementStatus() {
+        return settlementStatusListener.listen();
     }
 }
