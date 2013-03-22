@@ -12,6 +12,6 @@ public class SettlementRequestSender {
     private static final Logger LOG = LoggerFactory.getLogger(SettlementRequestSender.class);
 
     public void sendSettlementRequest(SettlementRequest aSettlementRequest) {
-        LOG.info("##### Pretend to send a settlement status using some sort of sender");
+        LOG.debug("##### Pretend to send a settlement status using some sort of sender");
     }
 }

@@ -23,6 +23,10 @@ public class DSL {
         return aSettlementRequest().withASettlementMethodOf(aSettlementMethod).build();
     }
 
+    protected SettlementRequest createSettlementRequestForTradeType(String aTradeType) {
+        return aSettlementRequest().withATradeTypeOf(aTradeType).build();
+    }
+
     protected void sendSettlementRequest(SettlementRequest aSettlementRequest) {
         settlementRequestSender.sendSettlementRequest(aSettlementRequest);
     }

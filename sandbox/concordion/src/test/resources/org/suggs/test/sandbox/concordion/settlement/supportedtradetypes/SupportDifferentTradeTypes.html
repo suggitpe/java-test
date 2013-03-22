@@ -17,7 +17,7 @@
     <table ccdn:execute="#result = processSettlementForTradeTypeOf(#tradeType)">
         <tr>
             <th ccdn:set="#tradeType">Trade Type</th>
-            <th ccdn:assertEquals="#result">Supported</th>
+            <th ccdn:assertEquals="#result.settlementComplete">Supported</th>
         </tr>
         <tr>
             <td>FX:Spot</td><td>Yes</td>

@@ -32,7 +32,7 @@ public class SettlementRequestStatusImpl implements SettlementRequestStatus {
         return complete;
     }
 
-    public void setComplete(boolean isComplete) {
+    public void setSettlementComplete(boolean isComplete) {
         complete = isComplete;
     }
 
