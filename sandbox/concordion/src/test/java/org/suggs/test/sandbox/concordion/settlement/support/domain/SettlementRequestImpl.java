@@ -1,10 +1,8 @@
-package org.suggs.test.sandbox.concordion.support.driver;
+package org.suggs.test.sandbox.concordion.settlement.support.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.suggs.test.sandbox.concordion.support.domain.SettlementMethod;
-import org.suggs.test.sandbox.concordion.support.domain.TradeType;
-import org.suggs.test.sandbox.concordion.support.dsl.SettlementRequest;
+import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
 
 /**
  * This classes responsibility is:

@@ -1,18 +1,15 @@
-package org.suggs.test.sandbox.concordion.support.dsl;
+package org.suggs.test.sandbox.concordion.settlement.support.dsl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.suggs.test.sandbox.concordion.support.driver.SettlementRequestSender;
-import org.suggs.test.sandbox.concordion.support.driver.SettlementStatusListener;
+import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestSender;
+import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementStatusListener;
 
-import static org.suggs.test.sandbox.concordion.support.driver.SettlementRequestBuilder.aSettlementRequest;
+import static org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestBuilder.aSettlementRequest;
 
 /**
  * This classes responsibility is:
  * 1.
  */
 public class DSL {
-    private static final Logger LOG = LoggerFactory.getLogger(DSL.class);
 
     // inject me fool!!!!
     private SettlementRequestSender settlementRequestSender = new SettlementRequestSender();

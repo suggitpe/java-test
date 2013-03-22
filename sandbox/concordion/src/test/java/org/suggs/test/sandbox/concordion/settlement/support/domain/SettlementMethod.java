@@ -1,4 +1,4 @@
-package org.suggs.test.sandbox.concordion.support.domain;
+package org.suggs.test.sandbox.concordion.settlement.support.domain;
 
 /**
  * This classes responsibility is:
