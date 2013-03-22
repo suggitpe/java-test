@@ -7,7 +7,7 @@ import static org.suggs.test.sandbox.concordion.settlement.support.driver.Settle
 
 /**
  * This classes responsibility is:
- * 1.
+ * 1. To define the key functional interactions with the system under test.
  */
 public class DSL {
 
@@ -22,6 +22,10 @@ public class DSL {
 
     protected SettlementRequest createSettlementRequestForTradeType(String aTradeType) {
         return aSettlementRequest().withATradeTypeOf(aTradeType).build();
+    }
+
+    public SettlementRequest createSettlementRequestForEventType(String aEventType) {
+        return aSettlementRequest().withAEventTypeOf(aEventType).build();
     }
 
     protected void sendSettlementRequest(SettlementRequest aSettlementRequest) {

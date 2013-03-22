@@ -1,9 +1,5 @@
 package org.suggs.test.sandbox.concordion.settlement.support.domain;
 
-/**
- * This classes responsibility is:
- * 1.
- */
 public enum SettlementMethod {
     ACCOUNT_TO_ACCOUNT("Account to Account"),
     CONTRACTUAL("Contractual"),

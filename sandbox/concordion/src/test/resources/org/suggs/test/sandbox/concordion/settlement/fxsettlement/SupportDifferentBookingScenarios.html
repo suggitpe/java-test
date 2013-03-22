@@ -8,28 +8,30 @@
 <div class="scenario" cp:scenario="Process settlement requests for a range of trade states">
 
     <h3>Process settlement requests for a range of trade states</h3>
+
     <p>
         In the booking of trades, we expect that the vast majority will be booked correctly first time and that no
-        changes are required to the booking.  However, we additionally expect that a number will also be booked
-        incorrectly.  In the case where a trade has been booked incorrectly there are two options:
-        <ol>
-            <li>Amend the trade: if the change is not an economic change</li>
-            <li>Cancel the trade: if the change is an economic (assumption is that the trade is rebooked)</li>
-        </ol>
+        changes are required to the booking. However, we additionally expect that a number will also be booked
+        incorrectly. In the case where a trade has been booked incorrectly there are two options:
+    <ol>
+        <li>Amend the trade: if the change is not an economic change</li>
+        <li>Cancel the trade: if the change is an economic (assumption is that the trade is rebooked)</li>
+    </ol>
     </p>
 
-    <table ccdn:execute="#result = processSettlement(#settlementStatus)">
+    <table ccdn:execute="#result = processSettlementForEventTypeOf(#eventType)">
         <tr>
-            <th ccdn:set="#settleStatus">Settlement Status</th>
+            <th ccdn:set="#eventType">Event Type</th>
+            <th ccdn:assertEquals="#result.settlementComplete">Supported</th>
         </tr>
         <tr>
-            <td>NEW</td>
+            <td>New</td><td>Yes</td>
         </tr>
         <tr>
-            <td>AMEND</td>
+            <td>Amend</td><td>Yes</td>
         </tr>
         <tr>
-            <td>CANCEL</td>
+            <td>Cancel</td><td>Yes</td>
         </tr>
 
     </table>

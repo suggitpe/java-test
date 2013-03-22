@@ -1,9 +1,5 @@
 package org.suggs.test.sandbox.concordion.settlement.support.domain;
 
-/**
- * This classes responsibility is:
- * 1.
- */
 public enum TradeType {
     FX_SPOT("FX;Spot"),
     FX_FORWARD("FX:Fwd"),

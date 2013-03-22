@@ -1,7 +1,5 @@
 package org.suggs.test.sandbox.concordion.settlement.support.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
 
 /**
@@ -9,10 +7,10 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementReques
  * 1.
  */
 public class SettlementRequestImpl implements SettlementRequest {
-    private static final Logger LOG = LoggerFactory.getLogger(SettlementRequestImpl.class);
 
     private SettlementMethod settlementMethod;
     private TradeType tradeType;
+    private EventType eventType;
 
     @Override
     public void setSettlementMethod(SettlementMethod aSettlementMethod) {
@@ -22,5 +20,10 @@ public class SettlementRequestImpl implements SettlementRequest {
     @Override
     public void setTradeType(TradeType aTradeType) {
         tradeType = aTradeType;
+    }
+
+    @Override
+    public void setEventType(EventType aEventType) {
+        eventType = aEventType;
     }
 }

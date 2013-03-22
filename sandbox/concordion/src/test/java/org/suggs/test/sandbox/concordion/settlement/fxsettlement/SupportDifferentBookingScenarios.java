@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.suggs.test.sandbox.concordion.settlement.support.dsl.DSL;
+import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
+import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
 
 
 /**
@@ -15,7 +17,9 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.DSL;
 public class SupportDifferentBookingScenarios extends DSL {
     private static final Logger LOG = LoggerFactory.getLogger(SupportDifferentBookingScenarios.class);
 
-    public void processSettlement(String aSettlementStatus) {
+    public SettlementRequestStatus processSettlementForEventTypeOf(String aEventType) {
+        SettlementRequest request = createSettlementRequestForEventType(aEventType);
+        sendSettlementRequest(request);
+        return waitForSettlementStatus();
     }
-
 }
