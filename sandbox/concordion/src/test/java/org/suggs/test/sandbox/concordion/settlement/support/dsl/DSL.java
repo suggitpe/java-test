@@ -3,6 +3,8 @@ package org.suggs.test.sandbox.concordion.settlement.support.dsl;
 import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestSender;
 import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementStatusListener;
 
+import javax.inject.Inject;
+
 import static org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestBuilder.aSettlementRequest;
 
 /**
@@ -11,9 +13,11 @@ import static org.suggs.test.sandbox.concordion.settlement.support.driver.Settle
  */
 public class DSL {
 
-    // inject me fool!!!!
-    private SettlementRequestSender settlementRequestSender = new SettlementRequestSender();
-    private SettlementStatusListener settlementStatusListener = new SettlementStatusListener();
+    @Inject
+    private SettlementRequestSender settlementRequestSender;
+
+    @Inject
+    private SettlementStatusListener settlementStatusListener;
 
 
     protected SettlementRequest createSettlementRequestForSettlementMethod(String aSettlementMethod) {

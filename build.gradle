@@ -54,6 +54,8 @@ project("sandbox:jbehave") {
 
 project("sandbox:concordion") {
     dependencies {
+        testCompile "javax.inject:javax.inject:$injectVersion"
+        testCompile "org.springframework:spring-beans:$springVersion"
         testCompile "org.concordion:concordion:$concordionVersion"
         testCompile "org.concordion:concordion-extensions:$concordionExtensionsVersion"
         testCompile "org.agileinsider:concordion-plus:$concordionPlusVersion"
