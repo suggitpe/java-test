@@ -22,11 +22,11 @@ public class DSL {
     private SettlementStatusListener settlementStatusListener;
 
 
-    protected SettlementRequest createSettlementRequestForSettlementMethod(String aSettlementMethod) {
+    public SettlementRequest createSettlementRequestForSettlementMethod(String aSettlementMethod) {
         return aSettlementRequest().withASettlementMethodOf(aSettlementMethod).build();
     }
 
-    protected SettlementRequest createSettlementRequestForTradeType(String aTradeType) {
+    public SettlementRequest createSettlementRequestForTradeType(String aTradeType) {
         return aSettlementRequest().withATradeTypeOf(aTradeType).build();
     }
 

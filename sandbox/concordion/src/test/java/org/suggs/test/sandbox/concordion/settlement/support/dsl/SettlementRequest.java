@@ -6,7 +6,7 @@ import org.suggs.test.sandbox.concordion.settlement.support.domain.TradeType;
 
 /**
  * This interfaces responsibility is:
- * 1.
+ * 1. Provide interaction behaviours to the settlement request from the test
  */
 public interface SettlementRequest {
 
