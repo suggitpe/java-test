@@ -10,7 +10,7 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementReques
 
 /**
  * This classes responsibility is:
- * 1.
+ * 1. Build settlement requests.
  */
 public class SettlementRequestBuilder {
     private static final Logger LOG = LoggerFactory.getLogger(SettlementRequestBuilder.class);

@@ -8,9 +8,10 @@ import javax.inject.Named;
 
 /**
  * This classes responsibility is:
- * 1.
+ * 1. To stub the settlement request sending function.
  */
 @Named
+@SuppressWarnings("unused")
 public class StubSettlementRequestSender implements SettlementRequestSender {
     private static final Logger LOG = LoggerFactory.getLogger(StubSettlementRequestSender.class);
 

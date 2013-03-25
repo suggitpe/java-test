@@ -4,7 +4,7 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementReques
 
 /**
  * This classes responsibility is:
- * 1.
+ * 1. POJO to represent the underlying settlement request.
  */
 public class SettlementRequestImpl implements SettlementRequest {
 

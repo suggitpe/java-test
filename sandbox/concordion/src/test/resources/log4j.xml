@@ -12,6 +12,11 @@
         </layout>
     </appender>
 
+    <category name="org.springframework">
+        <priority value="warn"/>
+    </category>
+
+
     <root>
         <priority value="debug"/>
         <appender-ref ref="ConsoleAppender"/>

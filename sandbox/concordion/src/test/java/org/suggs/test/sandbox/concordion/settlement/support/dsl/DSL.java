@@ -4,6 +4,7 @@ import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementReq
 import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementStatusListener;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import static org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestBuilder.aSettlementRequest;
 
@@ -11,6 +12,7 @@ import static org.suggs.test.sandbox.concordion.settlement.support.driver.Settle
  * This classes responsibility is:
  * 1. To define the key functional interactions with the system under test.
  */
+@Named("DSL")
 public class DSL {
 
     @Inject
@@ -32,11 +34,11 @@ public class DSL {
         return aSettlementRequest().withAEventTypeOf(aEventType).build();
     }
 
-    protected void sendSettlementRequest(SettlementRequest aSettlementRequest) {
+    public void sendSettlementRequest(SettlementRequest aSettlementRequest) {
         settlementRequestSender.sendSettlementRequest(aSettlementRequest);
     }
 
-    protected SettlementRequestStatus waitForSettlementStatus() {
+    public SettlementRequestStatus waitForSettlementStatus() {
         return settlementStatusListener.listen();
     }
 }

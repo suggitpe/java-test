@@ -9,9 +9,10 @@ import javax.inject.Named;
 
 /**
  * This classes responsibility is:
- * 1.
+ * 1. To stub the settlement status listener function.
  */
 @Named
+@SuppressWarnings("unused")
 public class StubSettlementStatusListener implements SettlementStatusListener {
     private static final Logger LOG = LoggerFactory.getLogger(StubSettlementStatusListener.class);
 

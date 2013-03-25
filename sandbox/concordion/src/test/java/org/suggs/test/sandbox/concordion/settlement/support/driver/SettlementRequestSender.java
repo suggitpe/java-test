@@ -4,7 +4,7 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementReques
 
 /**
  * This classes responsibility is:
- * 1.
+ * 1. Send settlement requests.
  */
 public interface SettlementRequestSender {
 
