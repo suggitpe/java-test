@@ -1,7 +1,6 @@
 package org.suggs.test.sandbox.concordion.settlement.fxsettlement;
 
 import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
 
 
 /**
@@ -10,9 +9,9 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementReques
  */
 public class SupportDifferentBookingScenarios extends AbstractFxSettlementFixture {
 
-    public SettlementRequestStatus processSettlementForEventTypeOf(String aEventType) {
+    public String processSettlementForEventTypeOf(String aEventType) {
         SettlementRequest request = dsl.createSettlementRequestForEventType(aEventType);
         dsl.sendSettlementRequest(request);
-        return dsl.waitForSettlementStatus();
+        return dsl.waitForSettlementStatus().isSettlementComplete()?aEventType:"Failed to process settlement";
     }
 }

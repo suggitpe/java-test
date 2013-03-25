@@ -1,7 +1,6 @@
 package org.suggs.test.sandbox.concordion.settlement.fxsettlement;
 
 import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
 
 /**
  * This classes responsibility is:
@@ -9,9 +8,14 @@ import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementReques
  */
 
 public class SupportDifferentTradeTypes extends AbstractFxSettlementFixture {
-    public SettlementRequestStatus processSettlementForTradeTypeOf(String aTradeType) {
+
+    /**
+     * Test fixture will either return the name of the trade type or it will give a default failure notice.
+     */
+    public String processSettlementForTradeTypeOf(String aTradeType) {
         SettlementRequest request = dsl.createSettlementRequestForTradeType(aTradeType);
         dsl.sendSettlementRequest(request);
-        return dsl.waitForSettlementStatus();
+        return dsl.waitForSettlementStatus().isSettlementComplete() ? aTradeType : "Failed to process settlement";
     }
+
 }

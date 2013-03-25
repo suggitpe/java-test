@@ -19,6 +19,6 @@ public enum EventType {
                 }
             }
         }
-        return null;
+        throw new IllegalStateException("Trying to process unsupported event type [" + aEnumText + "]");
     }
 }

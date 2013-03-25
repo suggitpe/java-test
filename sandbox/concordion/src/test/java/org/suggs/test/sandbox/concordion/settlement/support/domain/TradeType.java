@@ -1,11 +1,11 @@
 package org.suggs.test.sandbox.concordion.settlement.support.domain;
 
 public enum TradeType {
-    FX_SPOT("FX;Spot"),
-    FX_FORWARD("FX:Fwd"),
+    FX_SPOT("FX:Spot"),
+    FX_FORWARD("FX:Forward"),
     FX_SWAP("FX:Swap"),
-    FX_NDS("FX:NDS"),
-    FX_NDF("FX:NDF");
+    FX_NDS("FX:NonDeliverableSpot"),
+    FX_NDF("FX:NonDeliverableForward");
 
     private final String tradeType;
 
@@ -21,6 +21,6 @@ public enum TradeType {
                 }
             }
         }
-        return null;
+        throw new IllegalStateException("Trying to process unsupported trade type [" + aEnumText + "]");
     }
 }

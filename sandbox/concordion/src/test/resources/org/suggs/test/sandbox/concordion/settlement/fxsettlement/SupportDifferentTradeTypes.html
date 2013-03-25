@@ -5,38 +5,20 @@
 </head>
 <body>
 
-<div class="scenario" cp:scenario="Process settlements for a range of FX products">
+<h3>Process settlements for a range of FX products</h3>
 
-    <h3>Process settlements for a range of FX products</h3>
+<p>
+    The FX business utilises a number of products to sell to their clients. The Settlement Obligation
+    Management component will support these products.  The supported product set is listed below:
+</p>
 
-    <p>
-        The FX business utilises a number of products to sell to their clients. The Settlement Obligation
-        Management component will support these products.
-    </p>
-
-    <table ccdn:execute="#result = processSettlementForTradeTypeOf(#tradeType)">
-        <tr>
-            <th ccdn:set="#tradeType">Trade Type</th>
-            <th ccdn:assertEquals="#result.settlementComplete">Supported</th>
-        </tr>
-        <tr>
-            <td>FX:Spot</td><td>Yes</td>
-        </tr>
-        <tr>
-            <td>FX:Forward</td><td>Yes</td>
-        </tr>
-        <tr>
-            <td>FX:Swap</td><td>Yes</td>
-        </tr>
-        <tr>
-            <td>FX:NonDeliverableSpot</td><td>Yes</td>
-        </tr>
-        <tr>
-            <td>FX:NonDeliverableForward</td><td>Yes</td>
-        </tr>
-    </table>
-
-</div>
+<ul>
+    <li cp:scenario="FX:Spot"><span ccdn:assertEquals="processSettlementForTradeTypeOf(#TEXT)">FX:Spot</span> trades</li>
+    <li cp:scenario="FX:Forward"><span ccdn:assertEquals="processSettlementForTradeTypeOf(#TEXT)">FX:Forward</span> trades</li>
+    <li cp:scenario="FX:Swap"><span ccdn:assertEquals="processSettlementForTradeTypeOf(#TEXT)">FX:Swap</span> trades</li>
+    <li cp:scenario="FX:NonDeliverableSpot"><span ccdn:assertEquals="processSettlementForTradeTypeOf(#TEXT)">FX:NonDeliverableSpot</span> trades</li>
+    <li cp:scenario="FX:NonDeliverableForward"><span ccdn:assertEquals="processSettlementForTradeTypeOf(#TEXT)">FX:NonDeliverableForward</span> trades</li>
+</ul>
 
 </body>
 </html>
