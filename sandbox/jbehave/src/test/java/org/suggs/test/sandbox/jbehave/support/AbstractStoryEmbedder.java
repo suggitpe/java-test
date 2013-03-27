@@ -4,6 +4,7 @@ import org.jbehave.core.InjectableEmbedder;
 import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
 import org.jbehave.core.embedder.Embedder;
+import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromURL;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.AnnotatedEmbedderRunner;
@@ -41,14 +42,22 @@ public abstract class AbstractStoryEmbedder extends InjectableEmbedder {
     @Test
     @Override
     public void run() throws Throwable {
+        List<String> paths = createStoryPaths();
+        if( paths == null || paths.isEmpty() ){
+            throw new IllegalStateException( "No story paths found for state machine" );
+        }
+        LOG.info( "Running [" + this.getClass().getSimpleName() + "] with spring_stories [" + paths + "]" );
+        injectedEmbedder().runStoriesAsPaths(paths);
+    }
+
+    private List<String> createStoryPaths() {
+        String storyLocation = CodeLocations.codeLocationFromClass(this.getClass()).getFile();
+        LOG.info( "Running spring_stories from [" + storyLocation + "]" );
         StoryFinder finder = new StoryFinder();
-        LOG.info("Running stories from location [" + storyLocation + "]");
-        List<String> urls = finder.findPaths(storyLocation,
+        return finder.findPaths( storyLocation,
                 doGetStoryIncludeRegex(),
                 doGetStoryExcludeRegex(),
-                "file:" + storyLocation);
-        LOG.info("Running stories: " + urls);
-        injectedEmbedder().runStoriesAsPaths(urls);
+                "file:" + storyLocation );
     }
 
     protected List<String> doGetStoryIncludeRegex() {
