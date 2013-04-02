@@ -45,6 +45,7 @@ project("sandbox") {
         dependencies {
             testCompile project(':apps-under-test:trader')
             testCompile project(':apps-under-test:gameoflife')
+            testCompile project(':apps-under-test:spring-state-machine')
         }
     }
 }
@@ -53,14 +54,15 @@ project("sandbox:cucumber") {
     dependencies {
         testCompile "info.cukes:cucumber-junit:$cucumberVersion"
         testCompile "info.cukes:cucumber-java:$cucumberVersion"
+        testCompile "info.cukes:cucumber-spring:$cucumberVersion"
     }
 }
 
 project("sandbox:jbehave") {
     dependencies {
         testCompile "org.jbehave:jbehave-core:$jbehaveVersion"
+        testCompile "org.jbehave:jbehave-spring:$jbehaveVersion"
     }
-
 }
 
 project("sandbox:concordion") {
