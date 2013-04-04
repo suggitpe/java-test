@@ -55,6 +55,7 @@ project("sandbox:cucumber") {
         testCompile "info.cukes:cucumber-junit:$cucumberVersion"
         testCompile "info.cukes:cucumber-java:$cucumberVersion"
         testCompile "info.cukes:cucumber-spring:$cucumberVersion"
+        testCompile "javax.inject:javax.inject:$injectVersion"
     }
 }
 
@@ -63,6 +64,8 @@ project("sandbox:jbehave") {
         testCompile "org.jbehave:jbehave-core:$jbehaveVersion"
         testCompile "org.jbehave:jbehave-spring:$jbehaveVersion"
     }
+
+    //sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
 }
 
 project("sandbox:concordion") {

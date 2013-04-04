@@ -9,6 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.suggs.test.sandbox.trader.Stock.STATUS.valueOf;
 
+
 public class TraderStepdefs {
 
     private Stock stock = new Stock();

@@ -12,6 +12,16 @@
         <constructor-arg ref="initialState"/>
     </bean>
 
+    <bean id="stateMap" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <entry key="INITIAL" value-ref="initialState"/>
+                <entry key="CONNECTED" value-ref="connectedState"/>
+                <entry key="DISCONNECTED" value-ref="disconnectedState"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
     <!-- =============================== -->
     <!-- STATES -->
     <bean id="initialState" class="org.suggs.test.sandbox.statemachine.impl.StateImpl">
