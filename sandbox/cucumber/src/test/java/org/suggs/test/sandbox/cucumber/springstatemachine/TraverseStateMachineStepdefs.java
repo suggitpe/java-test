@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.suggs.test.sandbox.statemachine.*;
 import org.suggs.test.sandbox.statemachine.impl.StateTransitionEventImpl;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.inject.Qualifier;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -20,14 +20,14 @@ import static org.junit.Assert.assertThat;
  * This classes responsibility is:
  * 1.
  */
+@Named
 public class TraverseStateMachineStepdefs {
     private static final Logger LOG = LoggerFactory.getLogger(TraverseStateMachineStepdefs.class);
 
     @Inject
     protected StateMachine stateMachine;
 
-
-    @Inject
+    @Resource(name = "stateMap")
     protected Map<String, State> stateMap;
 
     @Given("^an unused state machine$")

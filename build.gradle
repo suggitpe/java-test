@@ -34,7 +34,7 @@ project("apps-under-test:spring-state-machine") {
     dependencies {
         testCompile "javax.inject:javax.inject:$injectVersion"
         testCompile "org.springframework:spring-test:$springVersion"
-        testCompile("org.springframework:spring-context:$springVersion")
+        testCompile "org.springframework:spring-context:$springVersion"
     }
 
 }
