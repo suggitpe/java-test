@@ -18,12 +18,10 @@ import java.util.List;
 
 /**
  * This classes responsibility is:
- * 1. Provide the abstract
+ * 1. Define the basic JBehave embedder for spring managed applications
  */
 @RunWith(SpringAnnotatedEmbedderRunner.class)
-@Configure(storyLoader = LoadFromURL.class,
-        storyReporterBuilder = SandboxStoryReporterBuilder.class,
-parameterConverters = {SandboxDateConverter.class})
+@Configure(storyLoader = LoadFromURL.class, storyReporterBuilder = SandboxStoryReporterBuilder.class, parameterConverters = {SandboxDateConverter.class})
 @UsingEmbedder(embedder = Embedder.class)
 public abstract class AbstractSpringStoryEmbedder extends InjectableEmbedder {
 
