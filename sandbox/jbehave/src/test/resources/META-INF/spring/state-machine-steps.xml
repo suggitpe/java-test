@@ -7,13 +7,7 @@
 
     <bean id="stateMachineSteps" class="org.suggs.test.sandbox.jbehave.springstatemachine.StateMachineSteps">
         <property name="stateMachine" ref="stateMachine" />
-        <property name="stateMap">
-            <map>
-                <entry key="INITIAL" value-ref="initialState" />
-                <entry key="CONNECTED" value-ref="connectedState" />
-                <entry key="DISCONNECTED" value-ref="disconnectedState" />
-            </map>
-        </property>
+        <property name="stateMap" ref="stateMap"/>
     </bean>
 
 </beans>

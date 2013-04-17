@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.suggs.test.sandbox.statemachine.*;
 import org.suggs.test.sandbox.statemachine.impl.StateTransitionEventImpl;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -20,8 +22,14 @@ public class StateMachineSteps {
 
     private static final Logger LOG = LoggerFactory.getLogger(StateMachineSteps.class);
 
-    protected StateMachine stateMachine;
+    public void setStateMachine(StateMachine stateMachine) {
+        this.stateMachine = stateMachine;
+    }
 
+    @Inject
+    private StateMachine stateMachine;
+
+    @Resource(name = "stateMap")
     private Map<String, State> stateMap;
 
     @BeforeStories
@@ -66,14 +74,6 @@ public class StateMachineSteps {
                 return new StateTransitionEventImpl(aEventType);
             }
         };
-    }
-
-    public void setStateMachine(StateMachine aStateMachine) {
-        stateMachine = aStateMachine;
-    }
-
-    public StateMachine getStateMachine() {
-        return stateMachine;
     }
 
     public Map<String, State> getStateMap() {

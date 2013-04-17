@@ -11,7 +11,7 @@ import java.util.List;
  * This classes responsibility is:
  * 1.
  */
-@UsingSpring(resources = {"classpath:META-INF/spring/state-machine-steps.xml"})
+@UsingSpring(resources = {"META-INF/spring/state-machine-steps.xml"})
 @UsingSteps(instances = {StateMachineSteps.class})
 public class TraverseStateMachineBehaviour extends AbstractSpringStoryEmbedder {
 

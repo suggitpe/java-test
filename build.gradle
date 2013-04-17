@@ -68,6 +68,7 @@ project("sandbox:jbehave") {
     dependencies {
         testCompile("org.jbehave:jbehave-spring:$jbehaveVersion") { exclude group: "org.springframework" }
         testCompile "org.springframework:spring-context:$springVersion"
+        testCompile "javax.inject:javax.inject:$injectVersion"
 
     }
     //sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
