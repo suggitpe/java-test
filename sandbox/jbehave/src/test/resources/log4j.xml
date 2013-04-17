@@ -16,6 +16,10 @@
         <priority value="warn"/>
     </category>
 
+    <category name="org.springframework.core.env">
+        <priority value="info"/>
+    </category>
+
     <root>
         <priority value="debug" />
         <appender-ref ref="ConsoleAppender" />

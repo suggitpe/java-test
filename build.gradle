@@ -14,6 +14,10 @@ allprojects {
         mavenCentral()
     }
 
+    idea.module{
+        downloadSources = true
+    }
+
 }
 
 subprojects { subprojects ->
@@ -27,6 +31,7 @@ subprojects { subprojects ->
         testCompile "junit:junit:$junitVersion"
         testCompile "org.mockito:mockito-all:$mockitoVersion"
     }
+
 
 }
 
@@ -61,11 +66,10 @@ project("sandbox:cucumber") {
 
 project("sandbox:jbehave") {
     dependencies {
-        testCompile ("org.jbehave:jbehave-spring:$jbehaveVersion"){ exclude group: "org.springframework"}
+        testCompile("org.jbehave:jbehave-spring:$jbehaveVersion") { exclude group: "org.springframework" }
         testCompile "org.springframework:spring-context:$springVersion"
 
     }
-
     //sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
 }
 
