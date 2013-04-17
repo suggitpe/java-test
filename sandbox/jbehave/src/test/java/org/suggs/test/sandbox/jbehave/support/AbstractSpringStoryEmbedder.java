@@ -16,6 +16,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
+import static org.slf4j.LoggerFactory.getLogger;
+
 /**
  * This classes responsibility is:
  * 1. Define the basic JBehave embedder for spring managed applications
@@ -25,7 +28,7 @@ import java.util.List;
 @UsingEmbedder(embedder = Embedder.class)
 public abstract class AbstractSpringStoryEmbedder extends InjectableEmbedder {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractSpringStoryEmbedder.class);
+    private static final Logger LOG = getLogger(AbstractSpringStoryEmbedder.class);
 
     @Test
     @Override
@@ -39,7 +42,7 @@ public abstract class AbstractSpringStoryEmbedder extends InjectableEmbedder {
     }
 
     private List<String> createStoryPaths() {
-        String storyLocation = CodeLocations.codeLocationFromClass(this.getClass()).getFile();
+        String storyLocation = codeLocationFromClass(this.getClass()).getFile();
         LOG.info("Running spring_stories from [" + storyLocation + "]");
         StoryFinder finder = new StoryFinder();
         return finder.findPaths(storyLocation,
