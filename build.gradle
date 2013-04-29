@@ -1,6 +1,10 @@
 allprojects {
     defaultTasks 'clean', 'build'
 
+}
+
+subprojects { subprojects ->
+
     apply plugin: 'maven'
     apply plugin: 'java'
     apply plugin: 'idea'
@@ -17,10 +21,6 @@ allprojects {
     idea.module{
         downloadSources = true
     }
-
-}
-
-subprojects { subprojects ->
 
     dependencies {
         compile "org.slf4j:slf4j-api:$slf4jVersion"
