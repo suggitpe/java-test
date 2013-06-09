@@ -19,7 +19,7 @@ public class GameOfLifeBehaviour {
     private GameOfLife gameOfLife;
 
     @Test
-    public void gameOfLifeBehaviour() throws Exception {
+    public void cellsInAGridCanBeToggledByReference() throws Exception {
         aJbehaveEmbedderRunner()
                 .withIncludedStoriesFoundBy("**/game_of_life_*.story")
                 .usingStepsFrom(this)
