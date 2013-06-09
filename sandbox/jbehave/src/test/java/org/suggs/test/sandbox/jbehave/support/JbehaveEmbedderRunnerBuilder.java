@@ -76,8 +76,8 @@ public class JbehaveEmbedderRunnerBuilder extends ConfigurableEmbedder {
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder withExcludedStoriesFilteredWith(List<String> aStoryFilterRegex) {
-        storyLocatorExcludeRegex = aStoryFilterRegex;
+    public JbehaveEmbedderRunnerBuilder withExcludedStoriesFilteredWith(String... aStoryFilterRegex) {
+        storyLocatorExcludeRegex = asList(aStoryFilterRegex);
         return this;
     }
 

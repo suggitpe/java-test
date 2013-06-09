@@ -4,14 +4,12 @@ import org.jbehave.core.InjectableEmbedder;
 import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
 import org.jbehave.core.embedder.Embedder;
-import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromURL;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.spring.SpringAnnotatedEmbedderRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +20,9 @@ import static org.slf4j.LoggerFactory.getLogger;
 /**
  * This classes responsibility is:
  * 1. Define the basic JBehave embedder for spring managed applications
+ * Deprecated in favour of the embedder runner builder style
  */
+@Deprecated
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure(storyLoader = LoadFromURL.class, storyReporterBuilder = SandboxStoryReporterBuilder.class, parameterConverters = {SandboxDateConverter.class})
 @UsingEmbedder(embedder = Embedder.class)
