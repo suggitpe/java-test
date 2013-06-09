@@ -8,7 +8,7 @@ import org.suggs.test.sandbox.gameoflife.GameOfLife;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.suggs.test.sandbox.jbehave.support.EmbedderRunnerBuilder.aJbehaveEmbedderRunner;
+import static org.suggs.test.sandbox.jbehave.support.JbehaveEmbedderRunnerBuilder.aJbehaveEmbedderRunner;
 
 /**
  * This classes responsibility is:

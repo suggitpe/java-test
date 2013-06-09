@@ -22,20 +22,20 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.junit.Assert.assertThat;
 
-public class EmbedderRunnerBuilder extends ConfigurableEmbedder {
+public class JbehaveEmbedderRunnerBuilder extends ConfigurableEmbedder {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EmbedderRunnerBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JbehaveEmbedderRunnerBuilder.class);
 
     private List<String> storyLocatorIncludeRegex;
     private List<String> storyLocatorExcludeRegex;
     private InjectableStepsFactory stepsFactory;
 
 
-    private EmbedderRunnerBuilder() {
+    private JbehaveEmbedderRunnerBuilder() {
     }
 
-    public static EmbedderRunnerBuilder aJbehaveEmbedderRunner() {
-        return new EmbedderRunnerBuilder();
+    public static JbehaveEmbedderRunnerBuilder aJbehaveEmbedderRunner() {
+        return new JbehaveEmbedderRunnerBuilder();
     }
 
     @Override
@@ -71,27 +71,27 @@ public class EmbedderRunnerBuilder extends ConfigurableEmbedder {
                 "file:" + storyLocation);
     }
 
-    public EmbedderRunnerBuilder withIncludedStoriesFoundBy(String... aStoryLocatorRegex) {
+    public JbehaveEmbedderRunnerBuilder withIncludedStoriesFoundBy(String... aStoryLocatorRegex) {
         storyLocatorIncludeRegex = asList(aStoryLocatorRegex);
         return this;
     }
 
-    public EmbedderRunnerBuilder withExcludedStoriesFilteredWith(List<String> aStoryFilterRegex) {
+    public JbehaveEmbedderRunnerBuilder withExcludedStoriesFilteredWith(List<String> aStoryFilterRegex) {
         storyLocatorExcludeRegex = aStoryFilterRegex;
         return this;
     }
 
-    public EmbedderRunnerBuilder usingStepsFrom(Object... stepsSource) {
+    public JbehaveEmbedderRunnerBuilder usingStepsFrom(Object... stepsSource) {
         stepsFactory = new InstanceStepsFactory(configuration(), stepsSource);
         return this;
     }
 
-    public EmbedderRunnerBuilder usingContextFrom(Class<?>... someContextClasses) {
+    public JbehaveEmbedderRunnerBuilder usingContextFrom(Class<?>... someContextClasses) {
         stepsFactory = new SpringStepsFactory(configuration(), new AnnotationConfigApplicationContext(someContextClasses));
         return this;
     }
 
-    public EmbedderRunnerBuilder usingContextFrom(String... someContextResources) {
+    public JbehaveEmbedderRunnerBuilder usingContextFrom(String... someContextResources) {
         stepsFactory = new SpringStepsFactory(configuration(), new ClassPathXmlApplicationContext(someContextResources));
         return this;
     }
