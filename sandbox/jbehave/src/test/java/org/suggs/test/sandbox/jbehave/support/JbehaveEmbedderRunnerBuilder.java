@@ -86,12 +86,12 @@ public class JbehaveEmbedderRunnerBuilder extends ConfigurableEmbedder {
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder usingContextFrom(Class<?>... someContextClasses) {
+    public JbehaveEmbedderRunnerBuilder usingStepsContextFrom(Class<?>... someContextClasses) {
         stepsFactory = new SpringStepsFactory(configuration(), new AnnotationConfigApplicationContext(someContextClasses));
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder usingContextFrom(String... someContextResources) {
+    public JbehaveEmbedderRunnerBuilder usingStepsContextFrom(String... someContextResources) {
         stepsFactory = new SpringStepsFactory(configuration(), new ClassPathXmlApplicationContext(someContextResources));
         return this;
     }

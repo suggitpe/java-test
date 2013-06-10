@@ -28,8 +28,7 @@ public class TraverseStateMachineBehaviour {
     public void traverseStateMachine() throws Exception {
         aJbehaveEmbedderRunner()
                 .withIncludedStoriesFoundBy("**/*machine.story")
-                .usingStepsFrom(this)
-                .usingContextFrom("META-INF/spring/state-machine-steps.xml")
+                .usingStepsContextFrom("META-INF/spring/state-machine-steps.xml")
                 .run();
     }
 

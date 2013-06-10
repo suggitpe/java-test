@@ -36,9 +36,8 @@ public class TraverseStateMachineAnnotatedBehaviour {
     @Test
     public void traverseStateMachine() throws Exception {
         aJbehaveEmbedderRunner()
-                .usingStepsFrom(this)
                 .withIncludedStoriesFoundBy("**/*machine.story")
-                .usingContextFrom(TraverseStateMachineAnnotatedBehaviour.class)
+                .usingStepsContextFrom(TraverseStateMachineAnnotatedBehaviour.class)
                 .run();
     }
 
