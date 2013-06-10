@@ -5,7 +5,7 @@
 
     <import resource="classpath:META-INF/spring/it-state-machine-connection-test-statemachine.xml" />
 
-    <bean id="stateMachineSteps" class="org.suggs.test.sandbox.jbehave.springstatemachine.StateMachineSteps">
+    <bean id="stateMachineSteps" class="org.suggs.test.sandbox.jbehave.springstatemachine.TraverseStateMachineBehaviour">
         <property name="stateMachine" ref="stateMachine" />
         <property name="stateMap" ref="stateMap"/>
     </bean>
