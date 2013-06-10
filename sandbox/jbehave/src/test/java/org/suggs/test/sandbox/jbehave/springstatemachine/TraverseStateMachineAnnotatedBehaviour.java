@@ -21,7 +21,7 @@ import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.suggs.test.sandbox.jbehave.support.JbehaveEmbedderRunnerBuilder.aJbehaveEmbedderRunner;
+import static org.suggs.test.sandbox.jbehave.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 
 /**
  * The functional responsibilities of this class are:
@@ -35,9 +35,9 @@ public class TraverseStateMachineAnnotatedBehaviour {
 
     @Test
     public void traverseStateMachine() throws Exception {
-        aJbehaveEmbedderRunner()
+        aBehaviouralTestRunner()
                 .withIncludedStoriesFoundBy("**/*machine.story")
-                .usingStepsContextFrom(TraverseStateMachineAnnotatedBehaviour.class)
+                .usingStepsConfigurationContextFrom(TraverseStateMachineAnnotatedBehaviour.class)
                 .run();
     }
 

@@ -9,7 +9,7 @@ import org.suggs.test.sandbox.trader.Stock;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.suggs.test.sandbox.jbehave.support.JbehaveEmbedderRunnerBuilder.aJbehaveEmbedderRunner;
+import static org.suggs.test.sandbox.jbehave.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 
 /**
  * This classes responsibility is:
@@ -21,7 +21,7 @@ public class TraderBehaviour {
 
     @Test
     public void traderIsAlertedWithStockPrices() throws Exception {
-        aJbehaveEmbedderRunner()
+        aBehaviouralTestRunner()
                 .withIncludedStoriesFoundBy("**/trader_is_alerted_*.story")
                 .usingStepsFrom(this)
                 .run();

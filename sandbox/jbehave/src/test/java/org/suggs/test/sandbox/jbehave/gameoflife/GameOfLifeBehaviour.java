@@ -8,7 +8,7 @@ import org.suggs.test.sandbox.gameoflife.GameOfLife;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.suggs.test.sandbox.jbehave.support.JbehaveEmbedderRunnerBuilder.aJbehaveEmbedderRunner;
+import static org.suggs.test.sandbox.jbehave.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 
 /**
  * This classes responsibility is:
@@ -20,7 +20,7 @@ public class GameOfLifeBehaviour {
 
     @Test
     public void cellsInAGridCanBeToggledByReference() throws Exception {
-        aJbehaveEmbedderRunner()
+        aBehaviouralTestRunner()
                 .withIncludedStoriesFoundBy("**/game_of_life_*.story")
                 .usingStepsFrom(this)
                 .run();

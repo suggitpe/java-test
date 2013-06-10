@@ -17,25 +17,25 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.junit.Assert.assertThat;
 
-public class JbehaveEmbedderRunnerBuilder extends ConfigurableEmbedder {
+public class BehaviouralTestEmbedder extends ConfigurableEmbedder {
 
-    private static final Logger LOG = LoggerFactory.getLogger(JbehaveEmbedderRunnerBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BehaviouralTestEmbedder.class);
+    public static final String BAD_USE_OF_API_MESSAGE = "You are trying to set the steps factory twice ... this is a paradox";
 
     private List<String> storyLocatorIncludeRegex;
     private List<String> storyLocatorExcludeRegex;
     private InjectableStepsFactory stepsFactory;
 
 
-    private JbehaveEmbedderRunnerBuilder() {
+    private BehaviouralTestEmbedder() {
     }
 
-    public static JbehaveEmbedderRunnerBuilder aJbehaveEmbedderRunner() {
-        return new JbehaveEmbedderRunnerBuilder();
+    public static BehaviouralTestEmbedder aBehaviouralTestRunner() {
+        return new BehaviouralTestEmbedder();
     }
 
     @Override
@@ -71,27 +71,30 @@ public class JbehaveEmbedderRunnerBuilder extends ConfigurableEmbedder {
                 "file:" + storyLocation);
     }
 
-    public JbehaveEmbedderRunnerBuilder withIncludedStoriesFoundBy(String... aStoryLocatorRegex) {
+    public BehaviouralTestEmbedder withIncludedStoriesFoundBy(String... aStoryLocatorRegex) {
         storyLocatorIncludeRegex = asList(aStoryLocatorRegex);
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder withExcludedStoriesFilteredWith(String... aStoryFilterRegex) {
+    public BehaviouralTestEmbedder withExcludedStoriesFilteredWith(String... aStoryFilterRegex) {
         storyLocatorExcludeRegex = asList(aStoryFilterRegex);
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder usingStepsFrom(Object... stepsSource) {
+    public BehaviouralTestEmbedder usingStepsFrom(Object... stepsSource) {
+        assertThat(BAD_USE_OF_API_MESSAGE, stepsFactory, is(nullValue()));
         stepsFactory = new InstanceStepsFactory(configuration(), stepsSource);
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder usingStepsContextFrom(Class<?>... someContextClasses) {
+    public BehaviouralTestEmbedder usingStepsConfigurationContextFrom(Class<?>... someContextClasses) {
+        assertThat(BAD_USE_OF_API_MESSAGE, stepsFactory, is(nullValue()));
         stepsFactory = new SpringStepsFactory(configuration(), new AnnotationConfigApplicationContext(someContextClasses));
         return this;
     }
 
-    public JbehaveEmbedderRunnerBuilder usingStepsContextFrom(String... someContextResources) {
+    public BehaviouralTestEmbedder usingStepsXmlContextFrom(String... someContextResources) {
+        assertThat(BAD_USE_OF_API_MESSAGE, stepsFactory, is(nullValue()));
         stepsFactory = new SpringStepsFactory(configuration(), new ClassPathXmlApplicationContext(someContextResources));
         return this;
     }

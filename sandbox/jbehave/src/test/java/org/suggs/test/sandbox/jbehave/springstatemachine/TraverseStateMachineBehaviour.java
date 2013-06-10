@@ -1,7 +1,6 @@
 package org.suggs.test.sandbox.jbehave.springstatemachine;
 
 import org.jbehave.core.annotations.*;
-import org.jbehave.core.annotations.spring.UsingSpring;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,7 @@ import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.suggs.test.sandbox.jbehave.support.JbehaveEmbedderRunnerBuilder.aJbehaveEmbedderRunner;
+import static org.suggs.test.sandbox.jbehave.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 
 /**
  * This classes responsibility is:
@@ -26,9 +25,9 @@ public class TraverseStateMachineBehaviour {
 
     @Test
     public void traverseStateMachine() throws Exception {
-        aJbehaveEmbedderRunner()
+        aBehaviouralTestRunner()
                 .withIncludedStoriesFoundBy("**/*machine.story")
-                .usingStepsContextFrom("META-INF/spring/state-machine-steps.xml")
+                .usingStepsXmlContextFrom("META-INF/spring/state-machine-steps.xml")
                 .run();
     }
 
