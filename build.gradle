@@ -2,7 +2,7 @@ allprojects {
     defaultTasks 'clean', 'build'
 }
 
-task wrapper(type: Wrapper){
+task wrapper(type: Wrapper) {
     description = "Generates gradlew scripts for NIX and win envs"
     gradleVersion = '1.6'
 }
@@ -10,10 +10,11 @@ task wrapper(type: Wrapper){
 subprojects { subprojects ->
 
     apply plugin: 'java'
-    apply plugin: 'idea'
+    apply from: "${rootDir}/gradle/version.gradle"
+    apply from: "${rootDir}/gradle/ide.gradle"
+    apply from: "${rootDir}/gradle/libraries.gradle"
 
     buildDir = 'target'
-    version = '1.0-SNAPSHOT'
     group = 'org.suggs.test'
 
     repositories {
@@ -21,69 +22,59 @@ subprojects { subprojects ->
         mavenCentral()
     }
 
-    idea.module{
-        downloadSources = true
-    }
-
     dependencies {
-        compile "org.slf4j:slf4j-api:$slf4jVersion"
+        compile libs.slf4jApi
 
-        runtime "org.slf4j:slf4j-log4j12:$slf4jVersion"
-        runtime "log4j:log4j:$log4jVersion"
+        runtime libs.slf4jLog4j,
+                libs.log4j
 
-        testCompile "junit:junit:$junitVersion"
-        testCompile "org.mockito:mockito-all:$mockitoVersion"
+        testCompile libs.test.junit,
+                libs.test.mockito
     }
-
-
 }
 
 project("apps-under-test:spring-state-machine") {
     dependencies {
-        testCompile "javax.inject:javax.inject:$injectVersion"
-        testCompile "org.springframework:spring-test:$springVersion"
-        testCompile "org.springframework:spring-context:$springVersion"
+        testCompile libs.javax.inject,
+                libs.spring.test,
+                libs.spring.context
     }
-
 }
-
 
 project("sandbox") {
     subprojects {
         dependencies {
-            testCompile project(':apps-under-test:trader')
-            testCompile project(':apps-under-test:gameoflife')
-            testCompile project(':apps-under-test:spring-state-machine')
+            testCompile project(':apps-under-test:trader'),
+                    project(':apps-under-test:gameoflife'),
+                    project(':apps-under-test:spring-state-machine'),
+                    libs.javax.inject
         }
     }
 }
 
 project("sandbox:cucumber") {
     dependencies {
-        testCompile "info.cukes:cucumber-junit:$cucumberVersion"
-        testCompile "info.cukes:cucumber-java:$cucumberVersion"
-        testCompile "info.cukes:cucumber-spring:$cucumberVersion"
-        testCompile "javax.inject:javax.inject:$injectVersion"
+        testCompile libs.cucumber.junit,
+                libs.cucumber.java,
+                libs.cucumber.spring
+
+        testRuntime libs.spring.context
     }
 }
 
 project("sandbox:jbehave") {
     dependencies {
-        testCompile("org.jbehave:jbehave-spring:$jbehaveVersion") { exclude group: "org.springframework" }
-        testCompile "org.springframework:spring-context:$springVersion"
-        testCompile "javax.inject:javax.inject:$injectVersion"
-
+        testCompile(libs.jbehave_spring) { exclude group: "org.springframework" }
+        testCompile libs.spring.context
     }
-    //sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
 }
 
 project("sandbox:concordion") {
     dependencies {
-        testCompile "javax.inject:javax.inject:$injectVersion"
-        testCompile "org.springframework:spring-context:$springVersion"
-        testCompile "org.concordion:concordion:$concordionVersion"
-        testCompile "org.concordion:concordion-extensions:$concordionExtensionsVersion"
-        testCompile "org.agileinsider:concordion-plus:$concordionPlusVersion"
+        testCompile libs.spring.context,
+                libs.concordion.concordion,
+                libs.concordion.extensions,
+                libs.concordion.plus
     }
 
     test {
