@@ -29,7 +29,7 @@ import static org.junit.Assert.assertThat;
  * @version 1.0 3 Sep 2009
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/it-state-machine-connection-test-statemachine.xml"})
+@ContextConfiguration(classes = ConnectionStateMachineConfiguration.class)
 public class StateMachineConnectionIntegrationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(StateMachineConnectionIntegrationTest.class);
