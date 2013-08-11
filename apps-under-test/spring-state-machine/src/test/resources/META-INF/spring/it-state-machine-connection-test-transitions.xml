@@ -22,72 +22,8 @@
     </bean>
 
     <!-- =============================== -->
-    <!-- TRANSITIONS -->
 
-    <bean id="fromInitialToDisconnected" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
-        <constructor-arg value="fromInitialToDisconnected"/>
-        <constructor-arg ref="initialState"/>
-        <constructor-arg ref="disconnectedState"/>
-    </bean>
-
-    <bean id="fromDisconnectedToConnecting" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
-        <constructor-arg value="fromDisconnectedToConnecting"/>
-        <constructor-arg ref="disconnectedState"/>
-        <constructor-arg ref="connectingState"/>
-        <property name="transitionEvents">
-            <list>
-                <bean
-                        class="org.suggs.test.sandbox.statemachine.impl.StateTransitionEventImpl">
-                    <constructor-arg value="connect"/>
-                </bean>
-            </list>
-        </property>
-    </bean>
-
-
-    <bean id="fromConnectingToConnected" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
-        <constructor-arg value="fromConnectingToConnected"/>
-        <constructor-arg ref="connectingState"/>
-        <constructor-arg ref="connectedState"/>
-        <property name="transitionGuards">
-            <list>
-                <bean class="org.suggs.test.sandbox.statemachine.support.TrueGuardStub"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="fromConnectingToFailed" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
-        <constructor-arg value="fromConnectingToFailed"/>
-        <constructor-arg ref="connectingState"/>
-        <constructor-arg ref="failedState"/>
-        <property name="transitionGuards">
-            <list>
-                <bean class="org.suggs.test.sandbox.statemachine.support.FalseGuardStub"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="fromFailedToConnecting" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
-        <constructor-arg value="fromFailedToConnecting"/>
-        <constructor-arg ref="failedState"/>
-        <constructor-arg ref="connectingState"/>
-    </bean>
-
-    <bean id="fromConnectedToDisconnecting" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
-        <constructor-arg value="fromConnectedToDisconnecting"/>
-        <constructor-arg ref="connectedState"/>
-        <constructor-arg ref="disconnectingState"/>
-        <property name="transitionEvents">
-            <list>
-                <bean
-                        class="org.suggs.test.sandbox.statemachine.impl.StateTransitionEventImpl">
-                    <constructor-arg value="disconnect"/>
-                </bean>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="fromDisconnectingToDisconnected" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
+       <bean id="fromDisconnectingToDisconnected" class="org.suggs.test.sandbox.statemachine.impl.StateTransitionImpl">
         <constructor-arg value="fromDisconnectingToDisconnected"/>
         <constructor-arg ref="disconnectingState"/>
         <constructor-arg ref="disconnectedState"/>
