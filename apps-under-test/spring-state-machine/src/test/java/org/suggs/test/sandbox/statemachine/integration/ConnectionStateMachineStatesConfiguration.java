@@ -2,7 +2,7 @@ package org.suggs.test.sandbox.statemachine.integration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Import;
 import org.suggs.test.sandbox.statemachine.State;
 import org.suggs.test.sandbox.statemachine.StateMachine;
 import org.suggs.test.sandbox.statemachine.impl.StateImpl;
@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@ImportResource(value = {"classpath:META-INF/spring/it-state-machine-connection-test-transitions.xml"})
-public class ConnectionStateMachineConfiguration {
+@Import(value = ConnectionStateMachineTransitionsConfiguration.class)
+public class ConnectionStateMachineStatesConfiguration {
 
     public static final String INITIAL_STATE = "Connection:Initial";
     public static final String DISCONNECTED_STATE = "Connection:Disconnected";
