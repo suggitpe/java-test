@@ -76,6 +76,13 @@ public class ConnectionStateMachineConfiguration {
         return transition;
     }
 
+    @Bean
+    public StateTransition fromDisconnectingToDisconnected(){
+        StateTransitionImpl transition = new StateTransitionImpl("fromDisconnectingToDisconnected", disconnectingState, disconnectedState);
+        transition.addTransitionGuard(new TrueGuardStub());
+        return transition;
+    }
+
 
 }
 
