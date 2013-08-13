@@ -4,7 +4,7 @@ allprojects {
 
 task wrapper(type: Wrapper) {
     description = "Generates gradlew scripts for NIX and win envs"
-    gradleVersion = '1.6'
+    gradleVersion = '1.7'
 }
 
 subprojects { subprojects ->
@@ -29,7 +29,8 @@ subprojects { subprojects ->
                 libs.log4j
 
         testCompile libs.test.junit,
-                libs.test.mockito
+                libs.test.mockito,
+                libs.hamcrest_all
     }
 }
 
@@ -64,8 +65,11 @@ project("sandbox:cucumber") {
 
 project("sandbox:jbehave") {
     dependencies {
-        compile(libs.jbehave_spring) { exclude group: "org.springframework" }
-        compile libs.spring.context
+        compile libs.jbehave_spring,
+                libs.spring.context,
+                libs.test.junit
+
+        testCompile project(':apps-under-test:spring-state-machine')
     }
 }
 
