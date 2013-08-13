@@ -1,7 +1,3 @@
-/*
- * Action.java created on 18 Feb 2010 20:14:10 by suggitpe for project state-machine-lib
- * 
- */
 package org.suggs.test.sandbox.statemachine;
 
 /**

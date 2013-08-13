@@ -1,7 +1,3 @@
-/*
- * StateImpl.java created on 28 Aug 2009 18:21:13 by suggitpe for project Libraries - State Machine
- * 
- */
 package org.suggs.test.sandbox.statemachine.impl;
 
 
@@ -16,9 +12,6 @@ import org.suggs.test.sandbox.statemachine.*;
  * This main purpose of this class is to act as the source of state information of the state machine. It is
  * also an associative class in that it provides the link between the step execution at the state machine
  * level down into the association and evaluation of the transitions.
- * 
- * @author suggitpe
- * @version 1.0 28 Aug 2009
  */
 public class StateImpl implements State {
 
@@ -28,53 +21,26 @@ public class StateImpl implements State {
     private Action entryAction;
     private Action exitAction;
     private Collection<StateTransition> transitions = new ArrayList<StateTransition>();
+    private StateTransitionManager transitionManager;
 
-    /**
-     * Constructs a new instance.
-     * 
-     * @param aStateName
-     *            the name of the state to initialise to
-     */
     public StateImpl( String aStateName ) {
-        super();
         stateName = aStateName;
     }
 
-    /**
-     * Constructs a new instance from another one.
-     * 
-     * @param aState
-     *            the state from which to build the new one.
-     */
     public StateImpl( State aState ) {
         super();
         stateName = aState.getStateName();
     }
 
-    /**
-     * @see org.suggs.test.sandbox.statemachine.State#getStateName()
-     */
     @Override
     public String getStateName() {
         return stateName;
     }
 
-    /**
-     * Setter for the entry action
-     * 
-     * @param aAction
-     *            the entry action
-     */
     public void setEntryAction( Action aAction ) {
         entryAction = aAction;
     }
 
-    /**
-     * Setter for the Exit action
-     * 
-     * @param aAction
-     *            the exit action
-     */
     public void setExitAction( Action aAction ) {
         exitAction = aAction;
     }
@@ -97,7 +63,7 @@ public class StateImpl implements State {
 
     private void loadTransitionsIntoState() {
         if ( transitions == null || transitions.size() == 0 ) {
-            transitions = StateTransitionManager.instance().getListOfTransitionsForState( this );
+            transitions = transitionManager.getListOfTransitionsForState( this );
         }
     }
 
@@ -124,9 +90,6 @@ public class StateImpl implements State {
         return successfulTransition == null ? this : successfulTransition.getEndingState();
     }
 
-    /**
-     * @see org.suggs.test.sandbox.statemachine.State#executeEntryAction(org.suggs.test.sandbox.statemachine.StateMachineContext)
-     */
     @Override
     public void executeEntryAction( StateMachineContext aContext ) throws StateMachineException {
         if ( entryAction != null ) {
@@ -137,9 +100,6 @@ public class StateImpl implements State {
         }
     }
 
-    /**
-     * @see org.suggs.test.sandbox.statemachine.State#executeExitAction(org.suggs.test.sandbox.statemachine.StateMachineContext)
-     */
     @Override
     public void executeExitAction( StateMachineContext aContext ) throws StateMachineException {
         if ( exitAction != null ) {
@@ -150,11 +110,6 @@ public class StateImpl implements State {
         }
     }
 
-    /**
-     * This impl ONLY uses the state name for equals comparisons.
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals( Object obj ) {
         if ( this == obj ) {
@@ -192,9 +147,6 @@ public class StateImpl implements State {
         return true;
     }
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -203,9 +155,6 @@ public class StateImpl implements State {
         return result;
     }
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         StringBuilder buff = new StringBuilder( "StateImpl:" );

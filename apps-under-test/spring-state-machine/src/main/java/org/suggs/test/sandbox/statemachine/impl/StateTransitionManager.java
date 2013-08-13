@@ -1,7 +1,3 @@
-/*
- * StateTransitionManager.java created on 24 Aug 2009 06:59:46 by suggitpe for project Libraries - State Machine
- * 
- */
 package org.suggs.test.sandbox.statemachine.impl;
 
 
@@ -30,23 +26,9 @@ import org.suggs.test.sandbox.statemachine.StateTransition;
 public final class StateTransitionManager {
 
     private static final Logger LOG = LoggerFactory.getLogger( StateTransitionManager.class );
-    private static final StateTransitionManager INSTANCE = new StateTransitionManager();
     private final Map<String, Map<String, StateTransition>> transitionMap = new HashMap<String, Map<String, StateTransition>>();
 
-    /**
-     * Constructs a new instance.
-     */
-    private StateTransitionManager() {
-        super();
-    }
-
-    /**
-     * Accessor method to the underlying singleton instance.
-     * 
-     * @return the singleton instance of the State Transition Manager
-     */
-    public static StateTransitionManager instance() {
-        return INSTANCE;
+    public StateTransitionManager() {
     }
 
     /**
