@@ -64,8 +64,8 @@ project("sandbox:cucumber") {
 
 project("sandbox:jbehave") {
     dependencies {
-        testCompile(libs.jbehave_spring) { exclude group: "org.springframework" }
-        testCompile libs.spring.context
+        compile(libs.jbehave_spring) { exclude group: "org.springframework" }
+        compile libs.spring.context
     }
 }
 
