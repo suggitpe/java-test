@@ -16,7 +16,7 @@
         <priority value="warn"/>
     </category>
 
-    <category name="org.springframework.core.env">
+    <category name="org.springframework">
         <priority value="info"/>
     </category>
 
