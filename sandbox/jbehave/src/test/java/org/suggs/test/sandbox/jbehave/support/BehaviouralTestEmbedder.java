@@ -4,7 +4,6 @@ import org.jbehave.core.ConfigurableEmbedder;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
 import org.jbehave.core.io.LoadFromURL;
-import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.ParameterConverters;
@@ -18,7 +17,6 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.*;
-import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.junit.Assert.assertThat;
 
 public class BehaviouralTestEmbedder extends ConfigurableEmbedder {
@@ -62,13 +60,7 @@ public class BehaviouralTestEmbedder extends ConfigurableEmbedder {
     }
 
     private List<String> createStoryPaths() {
-        String storyLocation = codeLocationFromClass(this.getClass()).getFile();
-        LOG.info("Running spring_stories from [" + storyLocation + "]");
-        StoryFinder finder = new StoryFinder();
-        return finder.findPaths(storyLocation,
-                storyLocatorIncludeRegex,
-                storyLocatorExcludeRegex,
-                "file:" + storyLocation);
+        return ClasspathStoryFinder.findStories(storyLocatorIncludeRegex);
     }
 
     public BehaviouralTestEmbedder withIncludedStoriesFoundBy(String... aStoryLocatorRegex) {

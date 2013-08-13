@@ -26,9 +26,17 @@ import org.suggs.test.sandbox.statemachine.StateTransition;
 public final class StateTransitionManager {
 
     private static final Logger LOG = LoggerFactory.getLogger( StateTransitionManager.class );
+    private static final StateTransitionManager INSTANCE = new StateTransitionManager();
     private final Map<String, Map<String, StateTransition>> transitionMap = new HashMap<String, Map<String, StateTransition>>();
 
-    public StateTransitionManager() {
+
+
+    public static StateTransitionManager instance(){
+        return INSTANCE;
+    }
+
+
+    private StateTransitionManager() {
     }
 
     /**

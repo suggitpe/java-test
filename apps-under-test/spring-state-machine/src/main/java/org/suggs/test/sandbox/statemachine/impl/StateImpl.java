@@ -21,7 +21,6 @@ public class StateImpl implements State {
     private Action entryAction;
     private Action exitAction;
     private Collection<StateTransition> transitions = new ArrayList<StateTransition>();
-    private StateTransitionManager transitionManager;
 
     public StateImpl( String aStateName ) {
         stateName = aStateName;
@@ -63,7 +62,7 @@ public class StateImpl implements State {
 
     private void loadTransitionsIntoState() {
         if ( transitions == null || transitions.size() == 0 ) {
-            transitions = transitionManager.getListOfTransitionsForState( this );
+            transitions = StateTransitionManager.instance().getListOfTransitionsForState( this );
         }
     }
 
