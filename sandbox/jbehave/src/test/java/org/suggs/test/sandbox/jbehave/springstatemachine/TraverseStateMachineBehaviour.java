@@ -1,11 +1,17 @@
 package org.suggs.test.sandbox.jbehave.springstatemachine;
 
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.suggs.test.sandbox.statemachine.*;
 import org.suggs.test.sandbox.statemachine.impl.StateTransitionEventImpl;
+import org.suggs.test.sandbox.statemachine.integration.ConnectionStateMachineConfiguration;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -19,6 +25,8 @@ import static org.suggs.test.sandbox.jbehave.support.BehaviouralTestEmbedder.aBe
  * This classes responsibility is:
  * 1.
  */
+@Configuration
+@Import(ConnectionStateMachineConfiguration.class)
 public class TraverseStateMachineBehaviour {
 
     private static final Logger LOG = LoggerFactory.getLogger(TraverseStateMachineBehaviour.class);
@@ -27,7 +35,7 @@ public class TraverseStateMachineBehaviour {
     public void traverseStateMachine() throws Exception {
         aBehaviouralTestRunner()
                 .withIncludedStoriesFoundBy("**/*machine.story")
-                .usingStepsXmlContextFrom("META-INF/spring/state-machine-steps.xml")
+                .usingStepsConfigurationContextFrom(TraverseStateMachineBehaviour.class)
                 .run();
     }
 
@@ -36,16 +44,6 @@ public class TraverseStateMachineBehaviour {
 
     @Resource(name = "stateMap")
     private Map<String, State> stateMap;
-
-    @BeforeStories
-    public void doBeforeStories() {
-        LOG.debug("=================== Start: " + TraverseStateMachineBehaviour.class.getSimpleName());
-    }
-
-    @AfterStories
-    public void doAfterStories() {
-        LOG.debug("=================== End: " + TraverseStateMachineBehaviour.class.getSimpleName());
-    }
 
     @Given("an unused state machine")
     public void aStateMachineExists() {
