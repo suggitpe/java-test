@@ -22,7 +22,6 @@ public class ClasspathStoryFinder {
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             List<Resource> resources = Arrays.asList(resolver.getResources(resource));
-            //List<URL> resources = toList(ClasspathStoryFinder.class.getClassLoader().getResources(resource));
             return transformUrlsToStrings(resources);
 
         } catch (IOException ioe) {
