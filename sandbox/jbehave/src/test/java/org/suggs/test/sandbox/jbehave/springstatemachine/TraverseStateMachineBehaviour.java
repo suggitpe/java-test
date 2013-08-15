@@ -34,7 +34,7 @@ public class TraverseStateMachineBehaviour {
     @Test
     public void traverseStateMachine() throws Exception {
         aBehaviouralTestRunner()
-                .withIncludedStoriesFoundBy("**/*machine.story")
+                .withStory("*machine.story")
                 .usingStepsConfigurationContextFrom(TraverseStateMachineBehaviour.class)
                 .run();
     }

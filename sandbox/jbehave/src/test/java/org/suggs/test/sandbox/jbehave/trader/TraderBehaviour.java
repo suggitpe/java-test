@@ -22,7 +22,7 @@ public class TraderBehaviour {
     @Test
     public void traderIsAlertedWithStockPrices() throws Exception {
         aBehaviouralTestRunner()
-                .withIncludedStoriesFoundBy("**/trader_is_alerted_*.story")
+                .withStory("trader_is_alerted_*.story")
                 .usingStepsFrom(this)
                 .run();
     }

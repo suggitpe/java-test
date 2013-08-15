@@ -13,6 +13,7 @@ subprojects { subprojects ->
     apply from: "${rootDir}/gradle/version.gradle"
     apply from: "${rootDir}/gradle/ide.gradle"
     apply from: "${rootDir}/gradle/libraries.gradle"
+    apply from: "${rootDir}/gradle/packaging.gradle"
 
     buildDir = 'target'
     group = 'org.suggs.test'
@@ -69,7 +70,7 @@ project("sandbox:jbehave") {
                 libs.spring.context,
                 libs.test.junit
 
-        testCompile project(':apps-under-test:spring-state-machine')
+        testCompile project(path: ':apps-under-test:spring-state-machine', configuration: 'testJarCfg')
     }
 }
 

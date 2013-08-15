@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.suggs.test.sandbox.jbehave.support.ClasspathStoryFinder.findStories;
+import static org.suggs.test.sandbox.jbehave.support.ClasspathStoryFinder.findFilenamesThatMatch;
 
 public class ClasspathStoryFinderTest {
 
@@ -16,15 +16,14 @@ public class ClasspathStoryFinderTest {
 
     @Test
     public void shouldFindTestTextFileFromClasspath() {
-        List<String> files = findStories("**/testFile*.txt");
-        LOG.debug("Found the following {} text files {}", files.size(), files);
-        assertThat(files.size(), is(3));
+        List<String> filenames = findFilenamesThatMatch("testFile*.txt");
+        LOG.debug("Found the following {} text filenames {}", filenames.size(), filenames);
+        assertThat(filenames.size(), is(3));
     }
 
     @Test
-    public void shouldFindTextFileByFullName(){
-        List<String> files = findStories("**/testFile2.txt");
-        assertThat( files.size(), is(1) );
-
+    public void shouldFindTextFileByFullName() {
+        List<String> filenames = findFilenamesThatMatch("testFile2.txt");
+        assertThat(filenames.size(), is(1));
     }
 }

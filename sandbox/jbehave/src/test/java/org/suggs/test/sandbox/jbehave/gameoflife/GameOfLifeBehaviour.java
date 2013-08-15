@@ -21,7 +21,7 @@ public class GameOfLifeBehaviour {
     @Test
     public void cellsInAGridCanBeToggledByReference() throws Exception {
         aBehaviouralTestRunner()
-                .withIncludedStoriesFoundBy("**/game_of_life_*.story")
+                .withStory("game_of_life_*.story")
                 .usingStepsFrom(this)
                 .run();
     }

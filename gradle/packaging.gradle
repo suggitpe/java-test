@@ -1,0 +1,19 @@
+task testJar(type: Jar){
+    classifier = 'test'
+    from sourceSets.test.output
+}
+
+task sourcesJar(type: Jar){
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+configurations{
+    testJarCfg
+}
+
+artifacts{
+    archives sourcesJar
+    archives testJar
+    testJarCfg testJar
+}
