@@ -15,7 +15,6 @@ subprojects { subprojects ->
     apply from: "${rootDir}/gradle/libraries.gradle"
     apply from: "${rootDir}/gradle/packaging.gradle"
 
-    buildDir = 'target'
     group = 'org.suggs.test'
 
     repositories {
