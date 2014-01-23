@@ -1,12 +1,9 @@
 package org.suggs.test.sandbox.concordion.settlement.securitiessettlement;
 
-import org.agileinsider.concordion.junit.ConcordionPlus;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RunWith(ConcordionPlus.class)
-public class AgencyBusiness {
+public class AgencyBusiness extends AbstractSecuritiesSettlementFixture {
 
     private static final Logger LOG = LoggerFactory.getLogger(AgencyBusiness.class);
 
@@ -22,15 +19,15 @@ public class AgencyBusiness {
         return text;
     }
 
-    public String checkOpenSettlementRiskPosted(String text){
+    public String checkOpenSettlementRiskPosted(String text) {
         return text;
     }
 
-    public String checkCloseSettlementRiskPosted(String text){
+    public String checkCloseSettlementRiskPosted(String text) {
         return text;
     }
 
-    public String checkBicBalances(String text){
+    public String checkBicBalances(String text) {
         return text;
     }
 

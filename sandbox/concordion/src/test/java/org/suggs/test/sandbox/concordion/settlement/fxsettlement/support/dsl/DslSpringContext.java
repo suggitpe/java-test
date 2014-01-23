@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * 1. to manage spring integration/injection for the tests
  */
 @Configuration
-@ComponentScan(basePackages = "org.suggs.test.sandbox.concordion.settlement")
+@ComponentScan(basePackages = "org.suggs.test.sandbox.concordion.settlement.fxsettlement")
 public class DslSpringContext {
 
 }
