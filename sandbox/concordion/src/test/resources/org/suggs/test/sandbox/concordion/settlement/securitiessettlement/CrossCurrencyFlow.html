@@ -1,0 +1,111 @@
+<html xmlns:ccdn="http://www.concordion.org/2007/concordion" xmlns:cp="http://www.agileinsider.org/concordion/plus">
+<title>Cross Currency Flow</title>
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<h3>Cross Currency Flow</h3>
+
+<p>
+    A client comes to us to buy (Order) Vodafone shares. We fill the order with a number of executions on the Market in
+    GBP, but the Client wants to settle in USD. Once the executions are complete, the Salesman requests a FX trader to
+    convert the USD that the Client will pay to us to the GBP that we will pay to the market. The FX Trader provides an
+    Exchange Rate, so that the Settlement Amount in USD can be calculated.
+
+    From an operational perspective:
+</p>
+
+<ul>
+    <li>on the client side, the allocations would be confirmed and be settled directly in USD</li>
+    <li>on the market side, the executions would be settled directly in GBP</li>
+    <li>on the client side, UBS Cash Equities would trade out the FX exposure to the FX stream</li>
+    <li>on both the market and client side, we would report all of the trades to the regulator</li>
+</ul>
+
+<p>
+    So for example:
+</p>
+
+<div class="scenario" cp:scenario="Customer orders BUY of 100m VODA shares">
+    <h4>Customer orders BUY 100m VODA shares</h4>
+
+    <p>With an buy order of 100m VODA, we might execute and allocate as below:</p>
+    <table ccdn:execute="createBookingReportsWith(#flow, #quantity, #currency)">
+        <tr>
+            <th ccdn:set="#flow">Flow</th>
+            <th ccdn:set="#quantity">Quantity (m)</th>
+            <th ccdn:set="#currency">Settlement Currency</th>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>70</td>
+            <td>GBP</td>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>30</td>
+            <td>GBP</td>
+        </tr>
+        <tr>
+            <td>Allocation</td>
+            <td>60</td>
+            <td>USD</td>
+        </tr>
+        <tr>
+            <td>Allocation</td>
+            <td>40</td>
+            <td>USD</td>
+        </tr>
+    </table>
+
+    <h4>Flow processing</h4>
+
+    <p>
+        The processing of the flows takes place on two separate dates: Trade Date and Value Date (Intended Settlement
+        Date).
+    </p>
+
+    <p>The following will happen on Trade Date triggered by notifications from the Middle Office:</p>
+    <ul>
+        <li>a Confirmation is sent to the Client advising them of the financials of the Trade and the FX made on their
+            behalf
+        </li>
+        <li>funding is updated to reflect the pending transactions that are due to move on Value Date in the 2 different
+            currencies
+        </li>
+        <li>the settlement instructions are issued in the correct currency (GBP for Market side, USD for Client side)
+        </li>
+        <li>the ledgers are updated to reflect the open settlement risk in the correct currency (GBP for Market side,
+            USD for Client side)
+        </li>
+        <li>the ledgers are updated to reflect the internal FX risk transfer between Cash Equities and FX business</li>
+        <li>the booking integrity control is checked to ensure that the total market and client (allocations vs
+            executions) match per instrument
+        </li>
+        <li>the FX control is checked to ensure that the FX exposure has been covered</li>
+        <li>the Settlement Matching control is checked to ensure that the Market and Client Trades are matched at the
+            settlement venue
+        </li>
+        <li>the Open Settlement feeds are checked to ensure that Market and Client Trades are included</li>
+        <li>the Finance feeds are checked to ensure that the ledger movements and balances are updated</li>
+    </ul>
+
+    <p>The following will happen on Value Date, triggered by notification of Settlement completion from the Agent
+        bank:</p>
+    <ul>
+        <li>funding is updated to reflect that the pending transactions have settled</li>
+        <li>the ledgers are updated to close the open settlement risk and move the values to the Nostro and Depot
+            accounts
+        </li>
+        <li>the Depot and Nostro controls are checked to ensure that the positions in the ledger match the positions at
+            the agent/ICSD
+        </li>
+        <li>the Finance feeds are checked to ensure that the ledger movements and balances are updated</li>
+        <li>the Open Settlement feeds are checked to ensure that Market and Client Trades are no longer included</li>
+
+    </ul>
+</div>
+
+</body>
+</html>
