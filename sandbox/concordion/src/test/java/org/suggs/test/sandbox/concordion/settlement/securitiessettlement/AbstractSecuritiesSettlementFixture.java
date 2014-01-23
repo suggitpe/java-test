@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(ConcordionPlus.class)
-public class AbstractSecuritiesSettlementFixture {
+public abstract class AbstractSecuritiesSettlementFixture {
     protected DSL dsl;
 
     public AbstractSecuritiesSettlementFixture() {
