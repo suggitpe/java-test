@@ -1,9 +1,9 @@
-package org.suggs.test.sandbox.concordion.settlement.support.driver;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.suggs.test.sandbox.concordion.settlement.support.domain.SettlementRequestStatusImpl;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain.SettlementRequestStatusImpl;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequestStatus;
 
 import javax.inject.Named;
 

@@ -1,4 +1,4 @@
-package org.suggs.test.sandbox.concordion.settlement.support.domain;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain;
 
 public enum TradeType {
     FX_SPOT("FX:Spot"),

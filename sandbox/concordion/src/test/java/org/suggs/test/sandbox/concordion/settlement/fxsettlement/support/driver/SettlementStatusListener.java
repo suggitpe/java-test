@@ -1,6 +1,6 @@
-package org.suggs.test.sandbox.concordion.settlement.support.driver;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver;
 
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequestStatus;
 
 /**
  * This interfaces responsibility is:

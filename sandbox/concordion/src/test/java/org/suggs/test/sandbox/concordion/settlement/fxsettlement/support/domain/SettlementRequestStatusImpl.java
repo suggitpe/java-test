@@ -1,8 +1,8 @@
-package org.suggs.test.sandbox.concordion.settlement.support.domain;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequestStatus;
 
 
 /**

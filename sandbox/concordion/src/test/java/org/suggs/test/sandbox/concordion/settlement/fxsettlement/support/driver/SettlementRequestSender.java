@@ -1,6 +1,6 @@
-package org.suggs.test.sandbox.concordion.settlement.support.driver;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver;
 
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequest;
 
 /**
  * This classes responsibility is:

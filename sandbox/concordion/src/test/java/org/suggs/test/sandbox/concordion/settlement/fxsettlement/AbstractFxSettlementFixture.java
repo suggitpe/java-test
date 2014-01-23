@@ -4,8 +4,8 @@ import org.agileinsider.concordion.junit.ConcordionPlus;
 import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.DSL;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.DslSpringContext;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.DSL;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.DslSpringContext;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;

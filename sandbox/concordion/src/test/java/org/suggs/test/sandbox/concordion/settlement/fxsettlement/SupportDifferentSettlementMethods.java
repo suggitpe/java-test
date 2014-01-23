@@ -1,7 +1,7 @@
 package org.suggs.test.sandbox.concordion.settlement.fxsettlement;
 
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequestStatus;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequest;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequestStatus;
 
 /**
  * This classes responsibility is:

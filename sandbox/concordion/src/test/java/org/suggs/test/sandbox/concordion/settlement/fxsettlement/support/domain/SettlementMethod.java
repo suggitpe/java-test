@@ -1,4 +1,4 @@
-package org.suggs.test.sandbox.concordion.settlement.support.domain;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain;
 
 public enum SettlementMethod {
     ACCOUNT_TO_ACCOUNT("Account to Account"),

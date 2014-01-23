@@ -1,12 +1,12 @@
-package org.suggs.test.sandbox.concordion.settlement.support.driver;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.suggs.test.sandbox.concordion.settlement.support.domain.EventType;
-import org.suggs.test.sandbox.concordion.settlement.support.domain.SettlementMethod;
-import org.suggs.test.sandbox.concordion.settlement.support.domain.SettlementRequestImpl;
-import org.suggs.test.sandbox.concordion.settlement.support.domain.TradeType;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain.EventType;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain.SettlementMethod;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain.SettlementRequestImpl;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.domain.TradeType;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequest;
 
 /**
  * This classes responsibility is:

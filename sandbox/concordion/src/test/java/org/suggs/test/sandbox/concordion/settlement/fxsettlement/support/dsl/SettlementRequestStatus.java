@@ -1,4 +1,4 @@
-package org.suggs.test.sandbox.concordion.settlement.support.dsl;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl;
 
 /**
  * This interfaces responsibility is:

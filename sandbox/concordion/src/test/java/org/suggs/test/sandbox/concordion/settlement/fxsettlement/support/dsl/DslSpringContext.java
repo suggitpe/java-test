@@ -1,4 +1,4 @@
-package org.suggs.test.sandbox.concordion.settlement.support.dsl;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

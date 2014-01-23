@@ -1,12 +1,12 @@
-package org.suggs.test.sandbox.concordion.settlement.support.dsl;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl;
 
-import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestSender;
-import org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementStatusListener;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver.SettlementRequestSender;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver.SettlementStatusListener;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import static org.suggs.test.sandbox.concordion.settlement.support.driver.SettlementRequestBuilder.aSettlementRequest;
+import static org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver.SettlementRequestBuilder.aSettlementRequest;
 
 /**
  * This classes responsibility is:

@@ -1,8 +1,8 @@
-package org.suggs.test.sandbox.concordion.settlement.support.driver;
+package org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.driver;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.suggs.test.sandbox.concordion.settlement.support.dsl.SettlementRequest;
+import org.suggs.test.sandbox.concordion.settlement.fxsettlement.support.dsl.SettlementRequest;
 
 import javax.inject.Named;
 
