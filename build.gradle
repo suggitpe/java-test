@@ -15,10 +15,12 @@ subprojects { subprojects ->
     apply from: "${rootDir}/gradle/libraries.gradle"
     apply from: "${rootDir}/gradle/packaging.gradle"
 
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+
     group = 'org.suggs.test'
 
     repositories {
-        mavenLocal()
         mavenCentral()
     }
 

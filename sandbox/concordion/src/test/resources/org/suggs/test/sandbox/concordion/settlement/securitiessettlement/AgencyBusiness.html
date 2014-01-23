@@ -1,0 +1,102 @@
+<html xmlns:ccdn="http://www.concordion.org/2007/concordion" xmlns:cp="http://www.agileinsider.org/concordion/plus">
+<title>Booking Scenarios</title>
+<head>
+    <link href="../concordion.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<h3>Netted Agency Flows</h3>
+
+<p>
+    A client comes to us to buy (Order) Vodafone shares. We fill the order with a number of executions on the
+    Market. Once the executions are complete, we then allocate the 'filled' order according to the client's preferences.
+
+    From an operational perspective:
+</p>
+<ul>
+    <li>on the client side, the allocations would be confirmed and be settled directly</li>
+    <li>on the market side, the executions would be netted through our Market Constituent and we would be informed of
+        the net
+    </li>
+    <li>on the market side, we would receive details from the CCP (Central Counterparty) about the way that these
+        executions would net together
+    </li>
+    <li>on both the market and client side, we would report all of the trades to the regulator</li>
+</ul>
+<p>
+    So for example:
+</p>
+
+<div class="scenario" cp:scenario="Customer orders BUY of 100m VODA shares">
+    <h4>Customer orders BUY 100m VODA shares</h4>
+
+    <p>With an buy order of 100m VODA, we might execute and allocate as below:</p>
+    <table ccdn:execute="createBookingReportsWith(#flow, #quantity)">
+        <tr>
+            <th ccdn:set="#flow">Flow</th>
+            <th ccdn:set="#quantity">Quantity (m)</th>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>31</td>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>Execution</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>Allocation</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>Allocation</td>
+            <td>50</td>
+        </tr>
+    </table>
+
+    <h4>Flow processing</h4>
+
+    <p>The processing of the flows takes place on two separate dates: Trade Date and Value Date (Intended Settlement
+        Date).</p>
+
+    <p>The following will happen on Trade Date triggered by notifications from the Middle Office:</p>
+    <ul>
+        <li><span ccdn:assertEquals="checkThatFundingHasBeenUpdatedWithPending(#TEXT)">funding is updated</span> to
+            reflect the pending transactions that are due to move on Value Date
+        </li>
+        <li><span ccdn:assertEquals="checkOpenSettlementRiskPosted(#TEXT)">the ledgers are updated</span> to reflect the
+            open settlement risk
+        </li>
+        <li><span ccdn:assertEquals="checkBicBalances(#TEXT)">the booking integrity is checked</span> to ensure that the
+            market and client (allocations vs executions) match
+        </li>
+    </ul>
+
+    <p>The following will happen on Value Date, triggered by notification of Settlement completion from the Agent
+        bank:</p>
+    <ul>
+        <li><span ccdn:assertEquals="checkThatFundingHasBeenUpdatedWithSettled(#TEXT)">funding is updated</span> to
+            reflect that the
+            pending transactions have settled
+        </li>
+        <li><span ccdn:assertEquals="checkCloseSettlementRiskPosted(#TEXT)">the ledgers are updated</span> to close the
+            open settlement risk and move the values to the Notro and Depot accounts
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
