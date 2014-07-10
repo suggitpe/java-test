@@ -3,9 +3,9 @@ package org.suggs.test.sandbox.assertj;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AssertJDemo {
@@ -22,7 +22,7 @@ public class AssertJDemo {
 
     @Test
     public void identifiesItemsInAList() {
-        List<String> nameList = Arrays.asList("Peter", "Paul", "Geoff");
+        List<String> nameList = asList("Peter", "Paul", "Geoff");
         assertThat(nameList).hasSize(3).contains("Peter", "Paul").doesNotContain("Alice");
     }
 
