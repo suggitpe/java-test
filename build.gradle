@@ -32,7 +32,7 @@ subprojects { subprojects ->
 
         testCompile libs.test.junit,
                 libs.test.mockito,
-                libs.hamcrest_all
+                libs.hamcrest_core
     }
 }
 
@@ -85,5 +85,11 @@ project("sandbox:concordion") {
 
     test {
         systemProperties 'concordion.output.dir': file("${buildDir}/concordion-results")
+    }
+}
+
+project("sandbox:assertj"){
+    dependencies{
+        testCompile libs.test.assertj
     }
 }

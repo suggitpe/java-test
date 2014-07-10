@@ -3,6 +3,7 @@ include "apps-under-test:trader",
         "apps-under-test:spring-state-machine",
         "sandbox:cucumber",
         "sandbox:jbehave",
-        "sandbox:concordion"
+        "sandbox:concordion",
+        "sandbox:assertj"
 
 
